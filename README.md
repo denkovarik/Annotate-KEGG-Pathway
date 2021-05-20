@@ -16,7 +16,7 @@ The project relies on Python 3.9 in order to runs. This link, [Python 3.9 Downlo
 The first thing you need to do is to make sure that Git is installed on your device. This would allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
 
 ### Cloning This Repo with HTTPS
-To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device. If you SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials.
+To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If you SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials.
 ```
 https://github.com/denkovarik/Bioinformatics-Tools.git
 ```
