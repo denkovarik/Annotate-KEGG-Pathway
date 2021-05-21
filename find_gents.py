@@ -1,5 +1,8 @@
 # Import Modules
 import sys
+import csv
+import codecs
+import pandas as pd
 
 
 
@@ -53,7 +56,7 @@ def excel_sheet_ext_good(filename):
     excel_file_name = sys.argv[1]
     # Find the position of the '.' char for determining the file
     # extension
-    pos = excel_file_name.find(".")
+    pos = excel_file_name.rfind(".")
     # Get the extension substring in the excel_file_name by 
     ext = excel_file_name[pos+1:]
     if ext == 'xls':
@@ -81,6 +84,14 @@ def print_usage():
 
 # Check the command line arguements
 check_cmd_args()
-
-    
-    
+# Read the xls file
+df = pd.read_excel(sys.argv[1])
+# Store EC numbers in a python set
+proteins = set(())  
+for protein in df.function:
+    pos = protein.find("(EC ")
+    if pos > 0:
+        proteins.add(protein[pos+4:protein.find(")", pos)].strip())
+        
+for protein in proteins:
+    print(protein)
