@@ -8,6 +8,8 @@ This project was developed for the Window's Operating System on a 64 bit machine
 ### Dependences
 * Git
 * Python 3.9
+* xlrd
+* pandas
 
 #### Install Python 3.9
 The project relies on Python 3.9 in order to runs. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
