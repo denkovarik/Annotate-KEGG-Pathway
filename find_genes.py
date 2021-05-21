@@ -31,13 +31,15 @@ def check_cmd_args():
             print(err)
             # Print usage statement
             print_usage()
-    else:
-        # Print error message
-        err = "Error: Invalid number of command line " 
-        err += "arguements\n"
-        print(err)
-        # Print usage statement
-        print_usage()
+            return False
+        return True
+    # Print error message
+    err = "Error: Invalid number of command line " 
+    err += "arguements\n"
+    print(err)
+    # Print usage statement
+    print_usage()
+    return False
 
 
 def file_ext_good(filename, ext):
@@ -86,7 +88,8 @@ def print_usage():
 ########################### Main ################################
 
 # Check the command line arguements
-check_cmd_args()
+if not check_cmd_args():
+    exit()
 # Read the xls file
 df = pd.read_excel(sys.argv[1])
 # Store EC numbers in a python set
