@@ -32,6 +32,15 @@ def check_cmd_args():
             # Print usage statement
             print_usage()
             return False
+        # 2nd command line argument is expected to be a txt file
+        elif not file_ext_good(sys.argv[2], 'txt'):
+            # Print error message
+            err = "Error: Second command line argument must be "
+            err += "an txt file\n"
+            print(err)
+            # Print usage statement
+            print_usage()
+            return False
         return True
     # Print error message
     err = "Error: Invalid number of command line " 
@@ -58,12 +67,11 @@ def file_ext_good(filename, ext):
     :return: True if filename has the .xls extension
     :return: False Otherwise
     """
-    file_name = sys.argv[1]
     # Find the position of the '.' char for determining the file
     # extension
-    pos = file_name.rfind(".")
+    pos = filename.rfind(".")
     # Get the extension substring in the excel_file_name by 
-    file_ext = file_name[pos+1:]
+    file_ext = filename[pos+1:]
     if file_ext == ext:
         # File ext good, return True
         return True   
@@ -99,5 +107,5 @@ for protein in df.function:
     if pos > 0:
         proteins.add(protein[pos+4:protein.find(")", pos)].strip())
         
-for protein in proteins:
-    print(protein)
+#for protein in proteins:
+    #print(protein)
