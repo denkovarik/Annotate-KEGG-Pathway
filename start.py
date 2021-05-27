@@ -43,7 +43,7 @@ layout = [
     [sg.Button("Help")],
 ]
 
-window = sg.Window('KEGG Pathway Genome Annotation', layout)
+window = sg.Window('Annotate KEGG Pathway', layout)
 
 while True:
     event, values = window.read()
