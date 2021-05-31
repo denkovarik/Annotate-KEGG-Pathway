@@ -77,21 +77,10 @@ def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None):
 
     newPathwayMapIm = pathwayMapIm[:pathwayMapIm.rfind(".")] \
                     + pathwayMapIm[pathwayMapIm.rfind("."):]
-    imPath = source_code.find('<img src="KEGG%20PATHWAY')
-    imPathStart = source_code.find('"', imPath)
-    imPathEnd = source_code.find('"', imPathStart+1)
-    source_code = source_code[:imPathStart+1] + "file:///" + newPathwayMapIm \
-                + source_code[imPathEnd:]
-    newHtmFilepath = htmFilepath[:htmFilepath.rfind(".")] \
-                   + htmFilepath[htmFilepath.rfind("."):] 
     i.save(newPathwayMapIm)
-    updatedHtmlFile = open(newHtmFilepath, "w", encoding='utf-8')
-    updatedHtmlFile.write(source_code)
-    #i.show()
     HtmlFile.close()
-    updatedHtmlFile.close()
     i.close()
-    return newHtmFilepath
+    return htmFilepath
 
 
 def check_dir_exists(path):
