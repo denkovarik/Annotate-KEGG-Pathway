@@ -73,7 +73,7 @@ def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None):
                     color = 'blue'
                     
                 if color != '':
-                    draw.rectangle([startCoords,endCoords],outline=color)
+                    draw.rectangle([startCoords,endCoords],outline=color,width=2)
 
     newPathwayMapIm = pathwayMapIm[:pathwayMapIm.rfind(".")] \
                     + pathwayMapIm[pathwayMapIm.rfind("."):]
