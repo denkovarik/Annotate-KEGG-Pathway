@@ -1,7 +1,7 @@
 # Annotate-KEGG-Pathway
 
 ## Introduction
-This project uses the genome annotations, completed by RAST and/or PATRIC, to annotate KEGG Pathways indicating which genes and proteins are present in an organism. This project currently reads the excel files of genome annotations and records the EC numbers of the proteins present in them. The program then parses the html file of a KEGG pathway looking for proteins in the KEGG pathway that are also found in the organism's genome annotaion. Proteins from a genome annotation that are also found to be present in a KEGG Pathway are indicated by colored boxes.
+This project uses the genome annotations, completed by RAST and/or PATRIC, to annotate KEGG Pathways indicating which genes and proteins are present in an organism. This project currently reads the excel files of genome annotations and records the EC numbers of the proteins present in them. The program then parses the html file of a KEGG pathway looking for proteins in the KEGG pathway that are also found in the organism's genome annotaion. Proteins from a genome annotation that are also found to be present in a KEGG Pathway are indicated by colored boxes around the protein's E.C. Number in the KEGG Pathway. Wen completed, the annotated KEGG pathway will open up in your browser as a working webpage. 
 
 ## Setup
 This project was developed for the Window's Operating System on a 64 bit machine.
