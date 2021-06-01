@@ -7,5 +7,7 @@ call py -m pip uninstall pandas
 call py -m pip uninstall Pillow
 :: Uninstall openpyxl
 call py -m pip uninstall openpyxl
+:: Install xlrd
+call py -m pip uninstall xlrd
 :: Uninstall PySimpleGUI
 call py -m pip uninstall PySimpleGUI

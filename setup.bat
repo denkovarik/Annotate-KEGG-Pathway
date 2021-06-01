@@ -8,5 +8,7 @@ call py -m pip install pandas
 call py -m pip install Pillow
 :: Install openpyxl
 call py -m pip install openpyxl
+:: Install xlrd
+call py -m pip install xlrd
 :: Install PySimpleGUI
 call py -m pip install PySimpleGUI
