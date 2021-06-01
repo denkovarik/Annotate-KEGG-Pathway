@@ -23,11 +23,11 @@ The first thing you need to do is to make sure that Git is installed on your dev
 ### Cloning This Repo with HTTPS
 To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If you SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials.
 ```
-https://github.com/denkovarik/Bioinformatics-Tools.git
+git clone https://github.com/denkovarik/Annotate-KEGG-Pathway.git
 ```
 After the repo has been cloned on your device, move into the Kovarik-Technical-Interview directory from the command line.
 ```
-cd Bioinformatics-Tools
+cd Annotate-KEGG-Pathway
 ```
 
 ### Cloning This Repo with SSH
@@ -42,16 +42,31 @@ Once you have an SSH Key Pair generated, you need to add your public SSH key to 
 #### Clone the Repository
 If your SDK allows for it, then clone this repository through you SDK. Otherwise, open up the command prompt, move the the directory of your choice, then run the following command.
 ```
-git clone git@github.com:denkovarik/Bioinformatics-Tools.git
+git clone git@github.com:denkovarik/Annotate-KEGG-Pathway.git
 ```
 After the repo has been cloned on your device, move into the Bioinformatics-Tools directory from the command line.
 ```
-cd Bioinformatics-Tools
+cd Annotate-KEGG-Pathway
+```
+
+### Install Dependencies
+Next, install the dependencies needed for the project. This can be done by simply running 'setup.bat' by doulble clicking on it in the file explore. Alternatively, you can run this script by executing the following command from within the project directory.
+```
+setup.bat
 ```
 
 ## Usage
+First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. To save the complete webpage to your local device, open the KEGG Pathway you want to annotate in your browser. Select 'File', then 'Select Save Page...'. Select the directory that you wish to save the page to, and make sure that the option 'Save as type:' is selected in the 'Save as type:' box. Then select save, and the complete webpage should be saved in the selected folder on you local device.
 
-## Functions and File Structure
+To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley from the command line in the project directory, run the following command.
+```
+py start.py
+```
+
+Upon startup, this program will ask for 4 filepaths. Enter either the filepath for the RAST genome annotataion excel spreadsheet, the filepath for the PATRIC genome annotataion excel spreadsheet, or both. Please note that only one of these excel spreadsheets are needed, but the program will also except both. Select the .htm file from the downloaded "
+usage += "pathway that you want to annotate. Finally, select the output directory that you want the program to place the annotated KEGG Pathway in. This will be a webpage that should open up in your browser.
+
+Finally, select 'Go'. The pathway will be annotated indicating which proteins in the pathway are also present in your organism. A green box means that the gene for a protein was found in both the RAST and PATRIC genome annotations. An orange box indicates that the gene for the protein was only found in the RAST genome annotation. Blue boxes means that the gene for the protein was only found in the PATRIC genome annotation.
 
 ## Author
 * Dennis Kovarik
