@@ -65,7 +65,8 @@ while True:
             # Read PATRIC Spreadsheet
             patric_ec = read_PATRIC_EC_Nums(PATRIC_filepath)
             # Annotate the Pathway
-            annotated_filepath = annotate_pathway(pathwayName, inDir, outDir, rast_ec, patric_ec)
+            webExt = path[path.rfind("."):]
+            annotated_filepath = annotate_pathway(pathwayName, inDir, outDir, rast_ec, patric_ec, webExt)
             msg = "Annotation of '" + pathwayName + "' is "
             msg += "Complete!\n\nThe proteins present in this pathway, "
             msg += "that are also present in your organism, are indicated "

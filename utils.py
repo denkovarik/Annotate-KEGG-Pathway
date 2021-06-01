@@ -11,10 +11,12 @@ import shutil
 from pathlib import Path
 import PySimpleGUI as sg
 
+webFileExt = ''
+
 
 ################################ Functions ##################################
 
-def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None):
+def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None, webExt=None):
     """
     This function annotates the pathway from KEGG.
     
@@ -25,14 +27,14 @@ def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None):
     inPathway = inDir + "\\" + baseName
     outPathway = outDir + "\\" + baseName
     # Check if files already exist in destination  
-    htmFilepath = outPathway + ".htm"
+    htmFilepath = outPathway + webExt
     if os.path.isfile(htmFilepath):
         os.remove(htmFilepath) 
     filesPath = outPathway+"_files"
     if os.path.isdir(filesPath):
         shutil.rmtree(filesPath)
     # Copy files into destination directory
-    shutil.copyfile(inPathway+".htm", htmFilepath)
+    shutil.copyfile(inPathway+webExt, htmFilepath)
     shutil.copytree(inPathway+"_files", outPathway+"_files")
     # Parse htm source code for pathway image filepath
     HtmlFile = open(htmFilepath, 'r', encoding='utf-8')
@@ -200,10 +202,6 @@ def is_PATRIC_spreadsheet(filepath):
         # Make sure file has expected columen names for PATRIC spreadsheet
         wb_obj = openpyxl.load_workbook(filepath)
         sheet = wb_obj.active
-        for row in sheet.iter_rows(max_row=1):
-            for cell, exp in zip(row, expected_col_names):
-                if cell.value != exp:
-                    return False
         return True
     except:
         err = "An error occured while reading file column names for PATRIC "
@@ -355,11 +353,16 @@ def valid_in_pathway_selection(filepath):
         sg.popup_ok(msg,title=title)
         return False
     # Check that file has .htm extension
-    elif filepath[filepath.rfind("."):] != '.htm':
-        msg = "The input pathway file must be a .htm file!"
-        title = "Invalid Pathway File Extension"
+    
+    if filepath[filepath.rfind("."):] == '.html':
+        return True
+    elif filepath[filepath.rfind("."):] == '.htm':
+        return True
+    else:
+        msg = "Invaid webpage file extenstion!"
+        title = "Invalid extension"
         sg.popup_ok(msg,title=title)
-        return False
+        return False	
     # Check that the selected file is a file
     if not os.path.isfile(filepath):
         msg = "The input pathway file doesn't exit!"
