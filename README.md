@@ -1,18 +1,20 @@
-# Bioinformatics-Tools
+# Annotate-KEGG-Pathway
 
 ## Introduction
-This Git repo contains some Bioinformatics tools to make things a little easier.
+This project uses the genome annotations, completed by RAST and/or PATRIC, to annotate KEGG Pathways indicating which genes and proteins are present in an organism. This project currently reads excel files of genome annotations and records the EC numbers of proteins present. The program then parses the html file of a KEGG pathway looking for the E.C. numbers of proteins from the KEGG pathway that are also found in the organism as indicated by the genome annotaion. Proteins from a genome annotation that are also found to be present in a KEGG Pathway are indicated by colored boxes.
+
 ## Setup
 This project was developed for the Window's Operating System on a 64 bit machine.
 
 ### Dependences
 * Git
 * Python 3.9
-* xlrd
+* pillow
 * pandas
 * openpyxl
+* PySimpleGUI
 
-#### Install Python 3.9
+### Install Python 3.9
 The project relies on Python 3.9 in order to runs. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
 
 ### Install Git on Windows
