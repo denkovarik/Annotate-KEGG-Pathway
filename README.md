@@ -25,7 +25,7 @@ To download this repository on your device, you must clone this repo using eithe
 ```
 git clone https://github.com/denkovarik/Annotate-KEGG-Pathway.git
 ```
-After the repo has been cloned on your device, move into the Kovarik-Technical-Interview directory from the command line.
+After the repo has been cloned on your device, move into the Annotate-KEGG-Pathway directory from the command line.
 ```
 cd Annotate-KEGG-Pathway
 ```
@@ -44,7 +44,7 @@ If your SDK allows for it, then clone this repository through you SDK. Otherwise
 ```
 git clone git@github.com:denkovarik/Annotate-KEGG-Pathway.git
 ```
-After the repo has been cloned on your device, move into the Bioinformatics-Tools directory from the command line.
+After the repo has been cloned on your device, move into the Annotate-KEGG-Pathway directory from the command line.
 ```
 cd Annotate-KEGG-Pathway
 ```
