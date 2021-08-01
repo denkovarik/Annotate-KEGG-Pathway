@@ -81,6 +81,11 @@ setup.bat
 
 If the above steps were completed correctly, then you should be able to open the KEGG Pathway from file, and it should work as a functional webpage.
 
+### Ensure that you have the RAST and/or PATRIC genome annotations for your organism.
+As of the writing of this article, this program requires a RAST and/or PATRIC genome annotaion for the organism. Please ensure that you have the excel files for these genome annotations in a known location.
+
+![Genome Annotation Locations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/genome%20annotations.png)
+
 Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. To save the complete webpage to your local device, open the KEGG Pathway you want to annotate in your browser. Select 'File', then 'Select Save Page...'. Select the directory that you wish to save the page to, and make sure that the option 'Save as type:' is selected in the 'Save as type:' box. Then select save, and the complete webpage should be saved in the selected folder on you local device.
 
 To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley from the command line in the project directory, run the following command.
