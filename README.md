@@ -15,11 +15,11 @@ This project was developed for the Window's Operating System on a 64 bit machine
 * PySimpleGUI
 * xlrd
 
-### Install Python 3.9
-This project relies on Python 3.9 to run and PIP to install other dependencies. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
-
 ### Install Git on Windows
 The first thing you need to do is to make sure that Git is installed on your device. This would allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
+
+### Install Python 3.9
+This project relies on Python 3.9 to run and PIP to install other dependencies. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
 
 ### Cloning This Repo with HTTPS
 To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If your SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials if prompted to do so.
