@@ -19,9 +19,13 @@ This project was developed for the Window's Operating System on a 64 bit machine
 The first thing you need to do is to make sure that Git is installed on your device. This will allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
 
 ### Install Python 3.9
-This project relies on Python 3.9 to run and PIP to install other dependencies. You can download Python via this link, [Python 3.9 Download](https://www.python.org/downloads/). Once the download is complete, launch the installer. Use all the default parameters and just click through the setup wizard to install Python.
+This project relies on Python 3.9 to run and PIP to install other dependencies. You can download Python via this link, [Python 3.9 Download](https://www.python.org/downloads/). Once the download is complete, launch the installer. 
 
-Once the install is complete, you can verify if python was installed correctly by doing the following. 
+Make sure that you check the box 'Add Python 3.9 to PATH'.\
+
+![Python Setup](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Python_install.PNG)
+
+Otherwise, use all the default parameters and just click through the setup wizard to install Python. Once the install is complete, you can verify if python was installed correctly by doing the following. 
 
 ### Cloning This Repo with HTTPS
 To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If your SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials if prompted to do so.
