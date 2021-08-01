@@ -6,7 +6,7 @@ This project was designed to help researchers use the biochemical pathways on KE
 ## Setup
 This project was developed for the Window's Operating System on a 64 bit machine.
 
-### Dependences
+### Dependencies
 * Git
 * Python 3
 * pillow
