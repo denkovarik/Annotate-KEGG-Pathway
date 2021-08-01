@@ -63,7 +63,7 @@ setup.bat
 
 ![KEGG Homepage](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/KEGG_homepage.png)
 
-2. Then enter a biochemical pathway that you wan to annotate. In this example, we will annotate the Gluconeogenesis pathway.
+2. Then enter a biochemical pathway that you want to annotate. In this example, we will annotate the Gluconeogenesis pathway.
 
 ![Search Pathways](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Search_for_pathway.PNG)
 
