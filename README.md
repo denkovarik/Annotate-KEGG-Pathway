@@ -121,7 +121,7 @@ Finally, select 'Go'. The pathway will be annotated, indicating which proteins i
 
 Click "Ok". The annotated genome will open up in your default browser. The annotated pathway can also be found in the output directory that you selected previously.
 
-[Annotated Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/annotated_pathway.PNG)
+![Annotated Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/annotated_pathway.PNG)
 
 A green box means that the gene for a protein was found in both the RAST and PATRIC genome annotations. An orange box indicates that the gene for the protein was only found in the RAST genome annotation. Blue boxes means that the gene for the protein was only found in the PATRIC genome annotation.
 
