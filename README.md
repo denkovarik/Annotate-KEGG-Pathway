@@ -63,6 +63,14 @@ On the KEGG homepage, select 'KEGG PATHWAY'.
 
 ![KEGG Homepage](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/KEGG_homepage.png)
 
+Then enter a biochemical pathway that you wan to annotate. In this example, we will annotate the Gluconeogenesis pathway.
+
+![Search Pathways](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Search_for_pathway.PNG)
+
+Select the KEGG Pathway you want to annotate from the search results.
+
+![Select KEGG Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Select_KEGG_Pathway.PNG)
+
 Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. To save the complete webpage to your local device, open the KEGG Pathway you want to annotate in your browser. Select 'File', then 'Select Save Page...'. Select the directory that you wish to save the page to, and make sure that the option 'Save as type:' is selected in the 'Save as type:' box. Then select save, and the complete webpage should be saved in the selected folder on you local device.
 
 To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley from the command line in the project directory, run the following command.
