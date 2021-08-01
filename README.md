@@ -1,7 +1,7 @@
 # Annotate-KEGG-Pathway
 
 ## Introduction
-This project was designed to help researches in Bioinformatics analyze the biochemical pathways present in an organism. This project currently reads the excel file of a genome annotations and records the EC numbers of the proteins present in them. The program then parses the html file of a KEGG pathway looking for proteins in the KEGG pathway that are also found in the organism's genome annotaion. Proteins from a genome annotation that are also found to be present in a KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway. When completed, the annotated KEGG pathway will open up in your browser as a working webpage. 
+This project was designed to help researches in Bioinformatics analyze the biochemical pathways present in an organism. This project reads the excel files from a genome annotation of an organism to record the EC numbers for the proteins present in them. The program then parses the html file of a KEGG pathway looking for proteins in the KEGG pathway that are also found in the organism's genome annotaion. Proteins from a genome annotation that are also found to be present in a KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway. When completed, the annotated KEGG pathway will open up in your browser as a working webpage. 
 
 ## Setup
 This project was developed for the Window's Operating System on a 64 bit machine.
