@@ -101,7 +101,7 @@ As of the writing of this article, this program requires a RAST and/or PATRIC ge
 
 ### Run Annotate-KEGG-Pathway
 
-1. To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley, you can run it from the command line. To do so, open the command prompt, move into the project directory, and then run the following command on the command line.
+1. To start the program, run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley, you can run it from the command line. To do so, open the command prompt, move into the project directory, and then run the following command on the command line.
 ```
 py start.py
 ```
