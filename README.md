@@ -94,12 +94,14 @@ setup.bat
 
 Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. If the above steps were completed correctly, then you should be able to open the KEGG Pathway from file, and it should work as a functional webpage.
 
-### Ensure that you have the RAST and/or PATRIC genome annotations for your organism.
+### Ensure that you have the RAST and/or PATRIC genome annotations for your organism
 As of the writing of this article, this program requires a RAST and/or PATRIC genome annotaion for the organism. Please ensure that you have the excel files for these genome annotations in a known location.
 
 ![Genome Annotation Locations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/genome%20annotations.png)
 
-To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley from the command line in the project directory, run the following command.
+### Run Annotate-KEGG-Pathway
+
+1. To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley, you can run it from the command line. To do so, open the command prompt, move into the project directory, and then run the following command on the command line.
 ```
 py start.py
 ```
