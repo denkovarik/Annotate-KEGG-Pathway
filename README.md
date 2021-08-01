@@ -32,7 +32,7 @@ cd Annotate-KEGG-Pathway
 ```
 
 ### Cloning This Repo with SSH
-You can also clone this repo using SSH. Follow the instructions below to clone the repo using SSH. Please note that if you have already cloned the repo using HTTPS, then you can skip to the 'Install Dependencies' step.
+You can also clone this repo using SSH. Follow the instructions below to clone the repo using SSH. Please note that if you have already cloned the repo using HTTPS, then you can skip to the 'Install Dependencies' step. If you wish to clone this repo using SSH, then please note that you will need an account on Github or Gitlab.
 
 #### Generate an SSH Key Pair
 In order to clone this repository, you need to add your public SSH key to this repo. If you don't have one, then you would need to generate one. [How to Generate SSH key in Windows 10? Easy Methods!!](https://techpaal.com/how-to-generate-ssh-key-in-windows-10-easy-methods/) should help you generate an SSH key pair.
@@ -41,7 +41,7 @@ In order to clone this repository, you need to add your public SSH key to this r
 Once you have an SSH Key Pair generated, you need to add your public SSH key to GitHub. Follow [How to view your SSH keys in Linux, macOS, and Windows](https://www.techrepublic.com/article/how-to-view-your-ssh-keys-in-linux-macos-and-windows/) to access you public key. Then follow [Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) to add your public SSH key to GitHub.
 
 #### Clone the Repository
-If your SDK allows for it, then clone this repository through you SDK. Otherwise, open up the command prompt, move the the directory of your choice, then run the following command.
+If your SDK allows for it, then clone this repository through your SDK. Otherwise, open up the command prompt, move into the directory of your choice, then run the following command.
 ```
 git clone git@github.com:denkovarik/Annotate-KEGG-Pathway.git
 ```
@@ -51,7 +51,7 @@ cd Annotate-KEGG-Pathway
 ```
 
 ### Install Dependencies
-Next, install the dependencies needed for the project. This can be done by simply running 'setup.bat' by doulble clicking on it in the file explore. Alternatively, you can run this script by executing the following command from within the project directory.
+Next, install the dependencies needed for the project. This can be done by simply running 'setup.bat' by doulble clicking on it in the file explorer. Alternatively, you can run this script by executing the following command on the command line from within the project directory.
 ```
 setup.bat
 ```
