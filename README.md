@@ -57,7 +57,9 @@ setup.bat
 ```
 
 ## Usage
-First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. On the KEGG homepage, select 'KEGG PATHWAY'. 
+First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. 
+
+On the KEGG homepage, select 'KEGG PATHWAY'. 
 
 ![KEGG Homepage](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/KEGG_homepage.png)
 
