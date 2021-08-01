@@ -1,12 +1,12 @@
 # Annotate-KEGG-Pathway
 
 ## Introduction
-This project was designed to help researchers use the biochemical pathways on KEGG (KEGG pathways) to analyze the genome of an organism. Specifically, it indicates which proteins from a KEGG pathway are present in an organism's genome. This project reads the excel file of an organism's genome annotation and records the EC numbers for the proteins present in them. Then it parses the html file of a KEGG pathway to determine the EC numbers of the proteins present in the pathway. The program compares the proteins from the KEGG pathway to the proteins found in the organism's genome annotation. Proteins from a genome annotation that are also found to be present in a KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway. When completed, the annotated KEGG pathway will open up in your browser as a working webpage. 
+This project was designed to help researchers use the biochemical pathways on KEGG (KEGG pathways) to analyze the genome of an organism. Specifically, it indicates which proteins from a KEGG pathway are present in an organism's genome. This project reads the excel file from an organism's genome annotation(s) (completed by RAST and/or PATRIC) and records the EC numbers for the proteins present in them. Then it parses the html file of a KEGG pathway to determine the EC numbers of the proteins present in the pathway. The program compares the proteins from the KEGG pathway to the proteins found in the organism's genome annotation. Proteins from the genome annotation that are also found to be present in the KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway. When completed, the annotated KEGG pathway will be saved to your local computer, and it will open up in your browser as a working webpage. 
 
 ## Setup
 This project was developed for the Window's Operating System on a 64 bit machine.
 
-### Dependences
+### Dependencies
 * Git
 * Python 3
 * pillow
@@ -15,11 +15,13 @@ This project was developed for the Window's Operating System on a 64 bit machine
 * PySimpleGUI
 * xlrd
 
-### Install Python 3.9
-The project relies on Python 3.9 in order to runs. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
-
 ### Install Git on Windows
-The first thing you need to do is to make sure that Git is installed on your device. This would allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
+The first thing you need to do is to make sure that Git is installed on your device. This will allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
+
+### Install Python 3.9
+This project relies on Python 3.9 to run and PIP to install other dependencies. You can download Python via this link, [Python 3.9 Download](https://www.python.org/downloads/). Once the download is complete, launch the installer. Use all the default parameters and just click through the setup wizard to install Python.
+
+Once the install is complete, you can verify if python was installed correctly by doing the following. 
 
 ### Cloning This Repo with HTTPS
 To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If your SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials if prompted to do so.
