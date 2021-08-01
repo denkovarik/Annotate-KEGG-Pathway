@@ -57,17 +57,17 @@ setup.bat
 ```
 
 ## Usage
-1. First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. 
+### First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. 
 
-  a) On the KEGG homepage, select 'KEGG PATHWAY'. 
+1. On the KEGG homepage, select 'KEGG PATHWAY'. 
 
 ![KEGG Homepage](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/KEGG_homepage.png)
 
-Then enter a biochemical pathway that you wan to annotate. In this example, we will annotate the Gluconeogenesis pathway.
+2. Then enter a biochemical pathway that you wan to annotate. In this example, we will annotate the Gluconeogenesis pathway.
 
 ![Search Pathways](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Search_for_pathway.PNG)
 
-Select the KEGG Pathway you want to annotate from the search results.
+3. Select the KEGG Pathway you want to annotate from the search results.
 
 ![Select KEGG Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Select_KEGG_Pathway.PNG)
 
