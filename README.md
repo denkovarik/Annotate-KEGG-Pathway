@@ -113,7 +113,17 @@ Upon startup, a window like the following will appear.
 
 The program will ask for 4 filepaths. Enter either the filepath for the RAST genome annotataion excel spreadsheet, the filepath for the PATRIC genome annotataion excel spreadsheet, or both. Please note that only one of these excel spreadsheets are needed, but the program will also accept both. Select the .htm file from the downloaded KEGG pathway that you want to annotate. Finally, select the output directory that you want the program to place the annotated KEGG Pathway in. This will be a webpage that should open up in your browser.
 
-Finally, select 'Go'. The pathway will be annotated indicating which proteins in the pathway are also present in your organism. A green box means that the gene for a protein was found in both the RAST and PATRIC genome annotations. An orange box indicates that the gene for the protein was only found in the RAST genome annotation. Blue boxes means that the gene for the protein was only found in the PATRIC genome annotation.
+![Enter Filepaths](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/enter_paths.PNG)
+
+Finally, select 'Go'. The pathway will be annotated, indicating which proteins in the pathway are also present in your organism's genome. Once the program finished, an info window will popup stating that the program has completed, and it will explain how to interpret the results of the annotation.
+
+![Info Window](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/info_window.PNG)
+
+Click "Ok". The annotated genome will open up in your default browser. The annotated pathway can also be found in the output directory that you selected previously.
+
+![Annotated Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/annotated_pathway.PNG)
+
+A green box means that the gene for a protein was found in both the RAST and PATRIC genome annotations. An orange box indicates that the gene for the protein was only found in the RAST genome annotation. Blue boxes means that the gene for the protein was only found in the PATRIC genome annotation.
 
 ## Author
 * Dennis Kovarik
