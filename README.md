@@ -75,6 +75,12 @@ setup.bat
 
 ![Download Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/download.png)
 
+5. Select location to save the KEGG Pathway on local device. Please ensure that 'Webpage, complete' option is selected under the 'Save as type:' field.
+
+![Download Webpage Complete](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/download_complete_webpage.png)
+
+If the above steps were completed correctly, then you should be able to open the KEGG Pathway from file, and it should work as a functional webpage.
+
 Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. To save the complete webpage to your local device, open the KEGG Pathway you want to annotate in your browser. Select 'File', then 'Select Save Page...'. Select the directory that you wish to save the page to, and make sure that the option 'Save as type:' is selected in the 'Save as type:' box. Then select save, and the complete webpage should be saved in the selected folder on you local device.
 
 To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley from the command line in the project directory, run the following command.
