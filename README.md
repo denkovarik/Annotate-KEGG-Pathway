@@ -16,7 +16,7 @@ This project was developed for the Window's Operating System on a 64 bit machine
 * xlrd
 
 ### Install Python 3.9
-The project relies on Python 3.9 in order to runs. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
+This project relies on Python 3.9 in order to runs. This link, [Python 3.9 Download](https://www.python.org/downloads/), will help you download and install both.
 
 ### Install Git on Windows
 The first thing you need to do is to make sure that Git is installed on your device. This would allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
