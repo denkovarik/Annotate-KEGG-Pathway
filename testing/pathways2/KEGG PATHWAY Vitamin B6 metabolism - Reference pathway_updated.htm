@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html><!---
+ENTRY       map00750
+DEFINITION  Vitamin B6 metabolism - Reference pathway
+---><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>
+KEGG PATHWAY: Vitamin B6 metabolism - Reference pathway
+</title>
+<style type="text/css">
+<!--
+div.poplay {
+  position: absolute;
+  padding: 2px;
+  background-color: #ffff99;
+  border-top: solid 1px #c0c0c0;
+  border-left: solid 1px #c0c0c0;
+  border-bottom: solid 1px #808080;
+  border-right: solid 1px #808080;
+  visibility: hidden;
+}
+
+span.popup
+{
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+form {
+  margin: 0px;
+}
+
+div.image {
+  position: absolute;
+  padding: 0px;
+  top: 0px;
+  padding: 0px;
+  border: solid 1px #000000;
+}
+
+img {
+  border: none;
+}
+
+
+-->
+</style>
+<link rel="stylesheet" href="KEGG%20PATHWAY%20Vitamin%20B6%20metabolism%20-%20Reference%20pathway_files/kegg.css" type="text/css">
+<script language="JavaScript" src="KEGG%20PATHWAY%20Vitamin%20B6%20metabolism%20-%20Reference%20pathway_files/dhtml.js"></script>
+
+<script language="JavaScript">
+<!---
+
+
+function resize_map(obj){
+  var form = document.forms["form2"];
+  var idx = obj.selectedIndex;
+  var value = obj.options[idx].value;
+	
+  if(value == "1.0_nc")
+  {
+    form.scale.value = "1.0";
+    form.nocolor.value = "1";
+  }
+  else if(value == "0.70_nc")
+  {
+    form.scale.value = "0.70";
+    form.nocolor.value = "1";
+  }
+  else if(value == "0.35_nc")
+  {
+    form.scale.value = "0.35";
+    form.nocolor.value = "1";
+  }
+  else
+	{
+    form.scale.value = value;
+    form.nocolor.value = "";
+		form.orgs.value  = '';
+    if(form.image)
+    {
+		//form.image.value  = '';
+    }
+		form.map.value = "map00750";
+	}
+
+	// 選択しているModuleの引き継ぎ
+	if (window.set_selected_module)
+		set_selected_module()
+
+  form.submit();
+}
+
+function select_menu(){
+  var form = document.forms["selmenu"];
+  if(form.org_name.value == 'set_cookie' || form.org_name.value == 'reset_cookie'){
+    window.open('/kegg/misc/kegg2_select.html','sel_org','toolbar=no,location=no,directories=no,width=500,height=320,resizable=yes');
+  }else{
+    form.action='/kegg-bin/show_pathway';
+    form.submit();
+  }
+}
+
+var timer = 0;
+var p_entry, p_title, p_bgcolor;
+function popupTimer(entry, title, bgcolor)
+{
+  p_entry = entry;
+  p_title = title;
+  p_bgcolor = bgcolor;
+
+  if(timer == 0){
+    var func = "showThumbnail()";
+    timer = setTimeout(func, 1200);
+  }
+}
+
+
+function showThumbnail()
+{
+
+  var url = "";
+  if(p_entry.match(/^[A-Z]+\d+$/))
+  {
+    url = "/kegg/misc/thumbnail/" + p_entry + ".gif";
+  }
+  else if(p_entry.match(/(\d+)$/))
+  {
+    url = "/kegg/misc/thumbnail/map" + RegExp.$1 + ".gif";
+  }
+
+  var html = "";
+
+  if(p_bgcolor != "#ffffff")
+  {
+    html += "<span class=\"popup\">" + p_entry + "</span><br />";
+  }
+
+  html += "<img src=\"" + url + "\" alt=\"Loading...\">";
+
+  var x = getCurrentMouseX();
+  var y = getCurrentMouseY();
+
+  var layer = new Component("poplay");
+  layer.backgroundColor(p_bgcolor);
+  layer.HTML(html);
+  layer.move(x, y+40);
+  layer.visible(true);
+
+  timer = 0;
+}
+
+function hideMapTn(){
+  var layer = new Component("poplay");
+  layer.visible(false);
+
+  if(timer != 0){
+    clearTimeout(timer);
+    timer = 0;
+  }
+}
+
+function switchDescription(){
+  var form = document.forms[0];
+  var status = form.show_description.value;
+
+  if(status == "hide"){
+    document.getElementById("description").style.display = "";
+    document.getElementById("descLink").innerHTML = "Hide description";
+    form.show_description.value='show';
+
+    if(document.forms[1]){
+    	document.forms[1].show_description.value='show';
+    }
+  }
+  else
+  {
+    document.getElementById("description").style.display = 'none';
+    document.getElementById("descLink").innerHTML = "Show description";
+    form.show_description.value='hide';
+
+    if(document.forms[1]){
+      document.forms[1].show_description.value='hide';
+    }
+  }
+}
+
+function btn(bobj,img) { bobj.src = "/Fig/bget/button_" + img + ".gif"; }
+//--->
+</script>
+</head>
+<body>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr>
+  <td>
+   <a href="https://www.kegg.jp/kegg/kegg2.html"><img alt="KEGG" src="KEGG%20PATHWAY%20Vitamin%20B6%20metabolism%20-%20Reference%20pathway_files/kegg3.gif" border="0" align="middle"></a>
+   &nbsp;&nbsp;&nbsp;<font class="title3"><b>Vitamin B6 metabolism - Reference pathway</b></font>
+  </td>
+  <td valign="bottom" align="right">
+   <a href="javascript:void(window.open('/kegg/document/help_pathway.html','KEGG_Help','toolbar=no,location=no,directories=no,width=720,height=640,resizable=yes,scrollbars=yes'))"><img name="help" src="KEGG%20PATHWAY%20Vitamin%20B6%20metabolism%20-%20Reference%20pathway_files/button_Hb.gif" alt="Help" onmouseout="btn(this,'Hb')" onmousedown="btn(this,'Hbd')" onmouseover="btn(this,'Hbh')" onmouseup="btn(this,'Hb')" border="0" align="middle"></a>
+  </td>
+ </tr>
+</tbody></table>
+
+  
+[
+<a href="https://www.kegg.jp/kegg-bin/get_htext?query=00750&amp;htext=br08901.keg&amp;option=-a">Pathway menu</a>
+| <a href="https://www.kegg.jp/kegg-bin/get_htext?htext=br08601_map00750.keg&amp;hier=5">Organism menu</a>
+| <a href="https://www.kegg.jp/dbget-bin/www_bget?pathway+map00750">Pathway entry</a>
+
+
+
+| <a href="javascript:void(window.open('/kegg/tool/color_a_pathway.html','KEGG_Help','height=300,width=600,resizable=yes,scrollbars=yes'))">User data mapping</a>
+
+]
+  
+
+<table><tbody><tr><td>
+<form name="selmenu" method="get">
+<select name="org_name">
+<option value="map" selected="selected">Reference pathway</option>
+<option value="ko">Reference pathway (KO)</option>
+<option value="ec">Reference pathway (EC)</option>
+<option value="rn">Reference pathway (Reaction)</option>
+<option value="map.sort_alp">-----&lt; Sort below by alphabet &gt;-----</option>
+<option value="hsa">Homo sapiens (human)</option>
+<option value="hsadd">Homo sapiens (human) + Disease/drug</option>
+<option value="mmu">Mus musculus (mouse)</option>
+<option value="rno">Rattus norvegicus (rat)</option>
+<option value="bta">Bos taurus (cow)</option>
+<option value="ssc">Sus scrofa (pig)</option>
+<option value="gga">Gallus gallus (chicken)</option>
+<option value="xla">Xenopus laevis (African clawed frog)</option>
+<option value="dre">Danio rerio (zebrafish)</option>
+<option value="ola">Oryzias latipes (Japanese medaka)</option>
+<option value="dme">Drosophila melanogaster (fruit fly)</option>
+<option value="cel">Caenorhabditis elegans (nematode)</option>
+<option value="ath">Arabidopsis thaliana (thale cress)</option>
+<option value="gmx">Glycine max (soybean)</option>
+<option value="sly">Solanum lycopersicum (tomato)</option>
+<option value="osa">Oryza sativa japonica (Japanese rice) (RefSeq)</option>
+<option value="zma">Zea mays (maize)</option>
+<option value="cre">Chlamydomonas reinhardtii</option>
+<option value="sce">Saccharomyces cerevisiae (budding yeast)</option>
+<option value="cal">Candida albicans</option>
+<option value="ncr">Neurospora crassa</option>
+<option value="ani">Aspergillus nidulans</option>
+<option value="afm">Aspergillus fumigatus</option>
+<option value="afv">Aspergillus flavus</option>
+<option value="spo">Schizosaccharomyces pombe (fission yeast)</option>
+<option value="cne">Cryptococcus neoformans var. neoformans JEC21</option>
+<option value="ddi">Dictyostelium discoideum (cellular slime mold)</option>
+<option value="ehi">Entamoeba histolytica</option>
+<option value="pfa">Plasmodium falciparum 3D7</option>
+<option value="pti">Phaeodactylum tricornutum</option>
+<option value="tps">Thalassiosira pseudonana</option>
+<option value="tbr">Trypanosoma brucei brucei</option>
+<option value="tcr">Trypanosoma cruzi</option>
+<option value="lma">Leishmania major</option>
+<option value="eco">Escherichia coli K-12 MG1655</option>
+<option value="ecj">Escherichia coli K-12 W3110</option>
+<option value="ece">Escherichia coli O157:H7 EDL933 (EHEC)</option>
+<option value="ecs">Escherichia coli O157:H7 Sakai (EHEC)</option>
+<option value="sty">Salmonella enterica subsp. enterica serovar Typhi CT18</option>
+<option value="stm">Salmonella enterica subsp. enterica serovar Typhimurium LT2</option>
+<option value="seo">Salmonella enterica subsp. enterica serovar Typhimurium 14028S</option>
+<option value="sfl">Shigella flexneri 301 (serotype 2a)</option>
+<option value="enc">Enterobacter cloacae subsp. cloacae ATCC 13047</option>
+<option value="kpn">Klebsiella pneumoniae subsp. pneumoniae MGH 78578 (serotype K52)</option>
+<option value="cro">Citrobacter rodentium</option>
+<option value="ype">Yersinia pestis CO92 (biovar Orientalis)</option>
+<option value="ypk">Yersinia pestis KIM10+ (biovar Mediaevalis)</option>
+<option value="yps">Yersinia pseudotuberculosis IP 32953 (serotype I)</option>
+<option value="yen">Yersinia enterocolitica subsp. enterocolitica 8081 (serotype 0:8)</option>
+<option value="smar">Serratia marcescens SM39</option>
+<option value="eca">Pectobacterium atrosepticum SCRI1043</option>
+<option value="ddd">Dickeya dadantii 3937</option>
+<option value="eam">Erwinia amylovora CFBP1430</option>
+<option value="buc">Buchnera aphidicola APS (Acyrthosiphon pisum)</option>
+<option value="hin">Haemophilus influenzae Rd KW20 (serotype d)</option>
+<option value="hdu">Haemophilus ducreyi</option>
+<option value="pmu">Pasteurella multocida subsp. multocida Pm70</option>
+<option value="apl">Actinobacillus pleuropneumoniae L20 (serotype 5b)</option>
+<option value="xfa">Xylella fastidiosa 9a5c</option>
+<option value="xcc">Xanthomonas campestris pv. campestris ATCC 33913</option>
+<option value="xac">Xanthomonas citri pv. citri 306</option>
+<option value="xom">Xanthomonas oryzae pv. oryzae MAFF 311018</option>
+<option value="vch">Vibrio cholerae O1 El Tor N16961</option>
+<option value="vvu">Vibrio vulnificus CMCP6</option>
+<option value="vpa">Vibrio parahaemolyticus RIMD 2210633</option>
+<option value="vfi">Aliivibrio fischeri ES114</option>
+<option value="pae">Pseudomonas aeruginosa PAO1</option>
+<option value="ppu">Pseudomonas putida KT2440</option>
+<option value="pst">Pseudomonas syringae pv. tomato DC3000</option>
+<option value="psb">Pseudomonas syringae pv. syringae B728a</option>
+<option value="avn">Azotobacter vinelandii DJ</option>
+<option value="acb">Acinetobacter baumannii ATCC 17978</option>
+<option value="aci">Acinetobacter baylyi</option>
+<option value="son">Shewanella oneidensis</option>
+<option value="lpn">Legionella pneumophila subsp. pneumophila Philadelphia 1 (serogroup 1)</option>
+<option value="mca">Methylococcus capsulatus</option>
+<option value="ftu">Francisella tularensis subsp. tularensis SCHU S4</option>
+<option value="nme">Neisseria meningitidis MC58 (serogroup B)</option>
+<option value="ngo">Neisseria gonorrhoeae FA 1090</option>
+<option value="rso">Ralstonia solanacearum GMI1000</option>
+<option value="reh">Cupriavidus necator H16</option>
+<option value="bma">Burkholderia mallei ATCC 23344</option>
+<option value="bps">Burkholderia pseudomallei K96243</option>
+<option value="bxe">Paraburkholderia xenovorans LB400</option>
+<option value="bpe">Bordetella pertussis Tohama I</option>
+<option value="eba">Aromatoleum aromaticum</option>
+<option value="hpy">Helicobacter pylori 26695</option>
+<option value="hpj">Helicobacter pylori J99</option>
+<option value="cje">Campylobacter jejuni subsp. jejuni NCTC 11168 = ATCC 700819</option>
+<option value="gsu">Geobacter sulfurreducens PCA</option>
+<option value="dvu">Desulfovibrio vulgaris Hildenborough</option>
+<option value="wol">Wolbachia endosymbiont of Drosophila melanogaster</option>
+<option value="mlo">Mesorhizobium japonicum MAFF 303099</option>
+<option value="sme">Sinorhizobium meliloti 1021</option>
+<option value="atu">Agrobacterium fabrum</option>
+<option value="ret">Rhizobium etli CFN 42</option>
+<option value="rle">Rhizobium leguminosarum bv. viciae 3841</option>
+<option value="bme">Brucella melitensis bv. 1 16M</option>
+<option value="bmf">Brucella abortus 2308</option>
+<option value="bms">Brucella suis 1330</option>
+<option value="bja">Bradyrhizobium diazoefficiens USDA 110</option>
+<option value="rpa">Rhodopseudomonas palustris CGA009</option>
+<option value="ccr">Caulobacter vibrioides CB15</option>
+<option value="rsp">Rhodobacter sphaeroides 2.4.1</option>
+<option value="pde">Paracoccus denitrificans</option>
+<option value="rru">Rhodospirillum rubrum ATCC 11170</option>
+<option value="bsu">Bacillus subtilis subsp. subtilis 168</option>
+<option value="ban">Bacillus anthracis Ames</option>
+<option value="bce">Bacillus cereus ATCC 14579</option>
+<option value="btk">Bacillus thuringiensis serovar konkukian 97-27</option>
+<option value="sau">Staphylococcus aureus subsp. aureus N315 (MRSA/VSSA)</option>
+<option value="sao">Staphylococcus aureus subsp. aureus NCTC8325</option>
+<option value="ser">Staphylococcus epidermidis RP62A (MRSE)</option>
+<option value="lmo">Listeria monocytogenes EGD-e (serotype 1/2a)</option>
+<option value="lin">Listeria innocua (serotype 6a)</option>
+<option value="lla">Lactococcus lactis subsp. lactis Il1403</option>
+<option value="llm">Lactococcus lactis subsp. cremoris MG1363</option>
+<option value="spy">Streptococcus pyogenes M1 GAS (serotype M1)</option>
+<option value="spn">Streptococcus pneumoniae TIGR4 (virulent serotype 4)</option>
+<option value="spr">Streptococcus pneumoniae R6 (avirulent serotype 2)</option>
+<option value="smu">Streptococcus mutans UA159 (serotype c)</option>
+<option value="ljo">Lactobacillus johnsonii NCC 533</option>
+<option value="lcb">Lacticaseibacillus paracasei BL23</option>
+<option value="lpl">Lactobacillus plantarum WCFS1</option>
+<option value="efa">Enterococcus faecalis V583</option>
+<option value="cac">Clostridium acetobutylicum ATCC 824</option>
+<option value="cpe">Clostridium perfringens 13</option>
+<option value="cbo">Clostridium botulinum A ATCC 3502</option>
+<option value="cdf">Clostridioides difficile 630</option>
+<option value="mta">Moorella thermoacetica ATCC 39073</option>
+<option value="mtu">Mycobacterium tuberculosis H37Rv</option>
+<option value="mtc">Mycobacterium tuberculosis CDC1551</option>
+<option value="mle">Mycobacterium leprae TN</option>
+<option value="msm">Mycolicibacterium smegmatis MC2 155</option>
+<option value="mab">Mycobacteroides abscessus ATCC 19977</option>
+<option value="cgl">Corynebacterium glutamicum ATCC 13032 (Kyowa Hakko)</option>
+<option value="cdi">Corynebacterium diphtheriae NCTC 13129</option>
+<option value="rha">Rhodococcus jostii</option>
+<option value="sco">Streptomyces coelicolor</option>
+<option value="sma">Streptomyces avermitilis</option>
+<option value="sgr">Streptomyces griseus</option>
+<option value="sct">Streptomyces cattleya NRRL 8057 = DSM 46488</option>
+<option value="sgu">Streptomyces glaucescens</option>
+<option value="ksk">Kitasatospora setae</option>
+<option value="amd">Amycolatopsis mediterranei U32</option>
+<option value="blo">Bifidobacterium longum NCC2705</option>
+<option value="syn">Synechocystis sp. PCC 6803</option>
+<option value="syc">Synechococcus elongatus PCC6301</option>
+<option value="syf">Synechococcus elongatus PCC7942</option>
+<option value="tel">Thermosynechococcus elongatus</option>
+<option value="pma">Prochlorococcus marinus subsp. marinus CCMP1375</option>
+<option value="gvi">Gloeobacter violaceus</option>
+<option value="ana">Nostoc sp. PCC 7120</option>
+<option value="npu">Nostoc punctiforme</option>
+<option value="cau">Chloroflexus aurantiacus</option>
+<option value="dra">Deinococcus radiodurans</option>
+<option value="tth">Thermus thermophilus HB27</option>
+<option value="bbu">Borreliella burgdorferi B31</option>
+<option value="tpa">Treponema pallidum subsp. pallidum Nichols</option>
+<option value="tde">Treponema denticola</option>
+<option value="lil">Leptospira interrogans serovar Lai 56601</option>
+<option value="bth">Bacteroides thetaiotaomicron VPI-5482</option>
+<option value="bfr">Bacteroides fragilis YCH46</option>
+<option value="fps">Flavobacterium psychrophilum JIP02/86</option>
+<option value="cte">Chlorobaculum tepidum</option>
+<option value="aae">Aquifex aeolicus</option>
+<option value="hth">Hydrogenobacter thermophilus</option>
+<option value="tma">Thermotoga maritima MSB8</option>
+<option value="mja">Methanocaldococcus jannaschii</option>
+<option value="mmp">Methanococcus maripaludis S2</option>
+<option value="mth">Methanothermobacter thermautotrophicus</option>
+<option value="afu">Archaeoglobus fulgidus DSM 4304</option>
+<option value="pfu">Pyrococcus furiosus DSM 3638</option>
+<option value="tko">Thermococcus kodakarensis</option>
+<option value="mba">Methanosarcina barkeri Fusaro</option>
+<option value="hal">Halobacterium salinarum NRC-1</option>
+<option value="hma">Haloarcula marismortui</option>
+<option value="hvo">Haloferax volcanii</option>
+<option value="tac">Thermoplasma acidophilum</option>
+<option value="ape">Aeropyrum pernix</option>
+<option value="sso">Saccharolobus solfataricus P2</option>
+<option value="sai">Sulfolobus acidocaldarius DSM 639</option>
+<option value="pai">Pyrobaculum aerophilum</option>
+<option value="nmr">Nitrosopumilus maritimus</option>
+</select>
+<input type="hidden" name="mapno" value="00750">
+<input type="hidden" name="scale" value="1.0">
+<input type="hidden" name="image" value="map00750_org_20210524112642124432.png">
+<input type="hidden" name="nocolor" value="">
+<input type="button" value="Go" onclick="select_menu(this.form)">
+<input type="hidden" name="show_description" value="hide">
+
+</form>
+</td><td>
+<form name="form2" method="get" action="/kegg-bin/highlight_pathway">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="select_scale" onchange="resize_map(this)">
+<option value="1.84">184%</option>
+<option value="1.5">150%</option>
+<option value="1.22">122%</option>
+<option value="1.0" selected="selected">100%</option>
+<option value="0.82">82%</option>
+<option value="0.67">67%</option>
+<option value="0.55">55%</option>
+</select>
+&nbsp;&nbsp;<input type="text" name="query" size="20">
+<input type="hidden" name="map" value="map00750">
+<input type="hidden" name="scale" value="1.0">
+<input type="hidden" name="image" value="map00750_org_20210524112642124432.png">
+<input type="hidden" name="nocolor" value="">
+<input type="hidden" name="show_description" value="hide">
+<input type="hidden" name="multi_query">
+<input type="hidden" name="module">
+
+<!--</form>-->
+</form></td></tr></tbody></table>
+
+
+<div class="image-block" style="position:static;;">
+
+<img src="..\pathways\KEGG PATHWAY Vitamin B6 metabolism - Reference pathway_files\map00750_org_20210524112642124432_annotated.png" id="pathwayimage" name="pathwayimage" usemap="#mapdata" width="1051" border="0">
+<map name="mapdata">
+<area shape="circle" coords="922,277,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00118" title="C00118 (D-Glyceraldehyde 3-phosphate)" onmouseover='popupTimer("C00118", "C00118 (D-Glyceraldehyde 3-phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="877,307,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00117" title="C00117 (D-Ribose 5-phosphate)" onmouseover='popupTimer("C00117", "C00117 (D-Ribose 5-phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="756,526,4" href="https://www.kegg.jp/dbget-bin/www_bget?C07335" title="C07335 (2-Amino-3-oxo-4-phosphonooxybutyrate)" onmouseover='popupTimer("C07335", "C07335 (2-Amino-3-oxo-4-phosphonooxybutyrate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="70,136,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00232" title="C00232 (Succinate semialdehyde)" onmouseover='popupTimer("C00232", "C00232 (Succinate semialdehyde)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="70,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C01215" title="C01215 (2-(Acetamidomethylene)succinate)" onmouseover='popupTimer("C01215", "C01215 (2-(Acetamidomethylene)succinate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="170,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C01270" title="C01270 (3-Hydroxy-2-methylpyridine-5-carboxylate)" onmouseover='popupTimer("C01270", "C01270 (3-Hydroxy-2-methylpyridine-5-carboxylate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="270,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C04604" title="C04604 (3-Hydroxy-2-methylpyridine-4,5-dicarboxylate)" onmouseover='popupTimer("C04604", "C04604 (3-Hydroxy-2-methylpyridine-4,5-dicarboxylate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="370,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C06050" title="C06050 (2-Methyl-3-hydroxy-5-formylpyridine-4-carboxylate)" onmouseover='popupTimer("C06050", "C06050 (2-Methyl-3-hydroxy-5-formylpyridine-4-carboxylate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="470,159,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00971" title="C00971 (4-Pyridoxolactone)" onmouseover='popupTimer("C00971", "C00971 (4-Pyridoxolactone)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="598,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00250" title="C00250 (Pyridoxal)" onmouseover='popupTimer("C00250", "C00250 (Pyridoxal)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="598,76,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00534" title="C00534 (Pyridoxamine)" onmouseover='popupTimer("C00534", "C00534 (Pyridoxamine)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="756,76,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00647" title="C00647 (Pyridoxamine phosphate)" onmouseover='popupTimer("C00647", "C00647 (Pyridoxamine phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="756,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00018" title="C00018 (Pyridoxal phosphate)" onmouseover='popupTimer("C00018", "C00018 (Pyridoxal phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="756,348,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00627" title="C00627 (Pyridoxine phosphate)" onmouseover='popupTimer("C00627", "C00627 (Pyridoxine phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="457,348,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00266" title="C00266 (Glycolaldehyde)" onmouseover='popupTimer("C00266", "C00266 (Glycolaldehyde)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="598,348,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00314" title="C00314 (Pyridoxine)" onmouseover='popupTimer("C00314", "C00314 (Pyridoxine)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="386,432,4" href="https://www.kegg.jp/dbget-bin/www_bget?C04773" title="C04773 (3-Hydroxy-4-hydroxymethyl-2-methylpyridine-5-carboxylate)" onmouseover='popupTimer("C04773", "C04773 (3-Hydroxy-4-hydroxymethyl-2-methylpyridine-5-carboxylate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="251,432,4" href="https://www.kegg.jp/dbget-bin/www_bget?C04690" title="C04690 (2-(Hydroxymethyl)-3-(acetamidomethylene)succinate)" onmouseover='popupTimer("C04690", "C04690 (2-(Hydroxymethyl)-3-(acetamidomethylene)succinate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="421,526,4" href="https://www.kegg.jp/dbget-bin/www_bget?C03393" title="C03393 (4-Phospho-D-erythronate)" onmouseover='popupTimer("C03393", "C03393 (4-Phospho-D-erythronate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="309,526,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00279" title="C00279 (D-Erythrose 4-phosphate)" onmouseover='popupTimer("C00279", "C00279 (D-Erythrose 4-phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="598,432,4" href="https://www.kegg.jp/dbget-bin/www_bget?C06051" title="C06051 (Isopyridoxal)" onmouseover='popupTimer("C06051", "C06051 (Isopyridoxal)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="494,432,4" href="https://www.kegg.jp/dbget-bin/www_bget?C06052" title="C06052 (5-Pyridoxolactone)" onmouseover='popupTimer("C06052", "C06052 (5-Pyridoxolactone)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="126,432,4" href="https://www.kegg.jp/dbget-bin/www_bget?C04106" title="C04106 (2-(Hydroxymethyl)-4-oxobutanoate)" onmouseover='popupTimer("C04106", "C04106 (2-(Hydroxymethyl)-4-oxobutanoate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="533,526,4" href="https://www.kegg.jp/dbget-bin/www_bget?C06054" title="C06054 (2-Oxo-3-hydroxy-4-phosphobutanoate)" onmouseover='popupTimer("C06054", "C06054 (2-Oxo-3-hydroxy-4-phosphobutanoate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="646,526,4" href="https://www.kegg.jp/dbget-bin/www_bget?C06055" title="C06055 (O-Phospho-4-hydroxy-L-threonine)" onmouseover='popupTimer("C06055", "C06055 (O-Phospho-4-hydroxy-L-threonine)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="470,212,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00847" title="C00847 (4-Pyridoxate)" onmouseover='popupTimer("C00847", "C00847 (4-Pyridoxate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="756,438,4" href="https://www.kegg.jp/dbget-bin/www_bget?C11638" title="C11638 (3-Amino-2-oxopropyl phosphate)" onmouseover='popupTimer("C11638", "C11638 (3-Amino-2-oxopropyl phosphate)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="646,458,4" href="https://www.kegg.jp/dbget-bin/www_bget?C06056" title="C06056 (4-Hydroxy-L-threonine)" onmouseover='popupTimer("C06056", "C06056 (4-Hydroxy-L-threonine)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="circle" coords="852,277,4" href="https://www.kegg.jp/dbget-bin/www_bget?C00064" title="C00064 (L-Glutamine)" onmouseover='popupTimer("C00064", "C00064 (L-Glutamine)", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="poly" coords="392,431,490,431,490,433,392,433" href="https://www.kegg.jp/dbget-bin/www_bget?R04593" title="R04593">
+<area shape="poly" coords="500,431,594,431,594,433,500,433" href="https://www.kegg.jp/dbget-bin/www_bget?R05084" title="R05084">
+<area shape="rect" coords="855,245,901,262" href="https://www.kegg.jp/dbget-bin/www_bget?K06215+K08681+4.3.3.6+R10089" title="K06215 (pdxS), K08681 (pdxT), 4.3.3.6, R10089">
+<area shape="rect" coords="550,127,596,144" href="https://www.kegg.jp/dbget-bin/www_bget?2.6.1.54+R05839" title="2.6.1.54, R05839">
+<area shape="rect" coords="600,108,646,125" href="https://www.kegg.jp/dbget-bin/www_bget?2.6.1.31+R01713" title="2.6.1.31, R01713">
+<area shape="rect" coords="550,108,596,125" href="https://www.kegg.jp/dbget-bin/www_bget?K18608+2.6.1.30+R01712" title="K18608 (ppaT), 2.6.1.30, R01712">
+<area shape="rect" coords="518,214,564,231" href="https://www.kegg.jp/dbget-bin/www_bget?1.2.3.8+R01709" title="1.2.3.8, R01709">
+<area shape="rect" coords="518,193,564,210" href="https://www.kegg.jp/dbget-bin/www_bget?K00157+1.2.3.1+R01709" title="K00157 (AOX), 1.2.3.1, R01709">
+<area shape="rect" coords="600,127,646,144" href="https://www.kegg.jp/dbget-bin/www_bget?K00275+K23998+1.4.3.5+R01710" title="K00275 (pdxH), K23998 (PPOX), 1.4.3.5, R01710">
+<area shape="rect" coords="722,479,793,494" href="https://www.kegg.jp/dbget-bin/www_bget?R07406" title="R07406">
+<area shape="poly" coords="645,455,645,364,645,364,645,363,645,363,645,362,645,362,644,361,644,361,643,360,643,360,642,359,642,359,641,358,642,357,641,357,641,357,640,357,640,357,605,357,605,359,640,359,640,359,641,359,641,359,642,359,643,358,644,359,644,359,645,360,645,360,646,361,646,361,647,362,647,362,647,363,647,363,647,364,647,364,647,455" href="https://www.kegg.jp/dbget-bin/www_bget?R01913" title="R01913">
+<area shape="rect" coords="797,127,843,144" href="https://www.kegg.jp/dbget-bin/www_bget?2.6.1.54+R01580" title="2.6.1.54, R01580">
+<area shape="rect" coords="734,127,780,144" href="https://www.kegg.jp/dbget-bin/www_bget?K00275+K23998+1.4.3.5+R00277" title="K00275 (pdxH), K23998 (PPOX), 1.4.3.5, R00277">
+<area shape="rect" coords="659,77,705,94" href="https://www.kegg.jp/dbget-bin/www_bget?K07758+K13248+3.1.3.74+R02494" title="K07758 (PDXP), K13248 (PHOSPHO2), 3.1.3.74, R02494">
+<area shape="rect" coords="659,58,705,75" href="https://www.kegg.jp/dbget-bin/www_bget?K00868+2.7.1.35+R02493" title="K00868 (pdxK), 2.7.1.35, R02493">
+<area shape="rect" coords="659,349,705,366" href="https://www.kegg.jp/dbget-bin/www_bget?K07758+K13248+3.1.3.74+R01911" title="K07758 (PDXP), K13248 (PHOSPHO2), 3.1.3.74, R01911">
+<area shape="rect" coords="659,330,705,347" href="https://www.kegg.jp/dbget-bin/www_bget?K00868+2.7.1.35+R01909" title="K00868 (pdxK), 2.7.1.35, R01909">
+<area shape="rect" coords="659,213,705,230" href="https://www.kegg.jp/dbget-bin/www_bget?K07758+K13248+3.1.3.74+R00173" title="K07758 (PDXP), K13248 (PHOSPHO2), 3.1.3.74, R00173">
+<area shape="rect" coords="659,194,705,211" href="https://www.kegg.jp/dbget-bin/www_bget?K00868+2.7.1.35+R00174" title="K00868 (pdxK), 2.7.1.35, R00174">
+<area shape="rect" coords="623,486,669,503" href="https://www.kegg.jp/dbget-bin/www_bget?K01733+4.2.3.1+R05086" title="K01733 (thrC), 4.2.3.1, R05086">
+<area shape="rect" coords="677,517,723,534" href="https://www.kegg.jp/dbget-bin/www_bget?K00097+1.1.1.262+R05681" title="K00097 (pdxA), 1.1.1.262, R05681">
+<area shape="rect" coords="569,518,615,535" href="https://www.kegg.jp/dbget-bin/www_bget?K00831+2.6.1.52+R05085" title="K00831 (serC), 2.6.1.52, R05085">
+<area shape="rect" coords="456,518,502,535" href="https://www.kegg.jp/dbget-bin/www_bget?K03473+1.1.1.290+R04210" title="K03473 (pdxB), 1.1.1.290, R04210">
+<area shape="rect" coords="343,518,389,535" href="https://www.kegg.jp/dbget-bin/www_bget?K03472+1.2.1.72+R01825" title="K03472 (epd), 1.2.1.72, R01825">
+<area shape="rect" coords="300,424,346,441" href="https://www.kegg.jp/dbget-bin/www_bget?1.14.13.241+R04570" title="1.14.13.241, R04570">
+<area shape="rect" coords="172,424,218,441" href="https://www.kegg.jp/dbget-bin/www_bget?3.5.1.66+R04397" title="3.5.1.66, R04397">
+<area shape="rect" coords="734,282,780,299" href="https://www.kegg.jp/dbget-bin/www_bget?K00275+K23998+1.4.3.5+R00278" title="K00275 (pdxH), K23998 (PPOX), 1.4.3.5, R00278">
+<area shape="rect" coords="550,282,596,299" href="https://www.kegg.jp/dbget-bin/www_bget?K18607+1.1.3.12+R01711" title="K18607 (pno), 1.1.3.12, R01711">
+<area shape="rect" coords="576,263,622,280" href="https://www.kegg.jp/dbget-bin/www_bget?K05275+1.1.1.65+R01708" title="K05275 (E1.1.1.65), 1.1.1.65, R01708">
+<area shape="rect" coords="600,282,646,299" href="https://www.kegg.jp/dbget-bin/www_bget?K00275+K23998+1.4.3.5+R01711" title="K00275 (pdxH), K23998 (PPOX), 1.4.3.5, R01711">
+<area shape="rect" coords="734,389,780,406" href="https://www.kegg.jp/dbget-bin/www_bget?K03474+2.6.99.2+R05838" title="K03474 (pdxJ), 2.6.99.2, R05838">
+<area shape="rect" coords="575,383,621,400" href="https://www.kegg.jp/dbget-bin/www_bget?1.1.99.9+R01910" title="1.1.99.9, R01910">
+<area shape="rect" coords="203,204,249,221" href="https://www.kegg.jp/dbget-bin/www_bget?K18613+4.1.1.51+R03461" title="K18613 (K18613), 4.1.1.51, R03461">
+<area shape="rect" coords="102,204,148,221" href="https://www.kegg.jp/dbget-bin/www_bget?K18071+1.14.13.242+R03385+R03386" title="K18071 (mhpco), 1.14.13.242, R03385, R03386">
+<area shape="rect" coords="48,170,94,187" href="https://www.kegg.jp/dbget-bin/www_bget?K18614+3.5.1.29+R01649" title="K18614 (K18614), 3.5.1.29, R01649">
+<area shape="rect" coords="518,151,564,168" href="https://www.kegg.jp/dbget-bin/www_bget?K18609+1.1.1.107+R01707" title="K18609 (pldh), 1.1.1.107, R01707">
+<area shape="rect" coords="447,172,493,189" href="https://www.kegg.jp/dbget-bin/www_bget?K18610+3.1.1.27+R02992" title="K18610 (pdla), 3.1.1.27, R02992">
+<area shape="poly" coords="461,347,592,347,592,349,461,349" href="https://www.kegg.jp/dbget-bin/www_bget?R05840" title="R05840">
+<area shape="rect" coords="403,204,449,221" href="https://www.kegg.jp/dbget-bin/www_bget?K18611+1.1.99.42+R02993" title="K18611 (K18611), 1.1.99.42, R02993">
+<area shape="rect" coords="304,204,350,221" href="https://www.kegg.jp/dbget-bin/www_bget?K18612+1.2.1.100+R04524" title="K18612 (E1.2.1.100), 1.2.1.100, R04524">
+<area shape="rect" coords="529,423,575,440" href="https://www.kegg.jp/dbget-bin/www_bget?1.1.1.416+R05084" title="1.1.1.416, R05084">
+<area shape="rect" coords="461,453,507,470" href="https://www.kegg.jp/dbget-bin/www_bget?1.2.1.102+R12265" title="1.2.1.102, R12265">
+<area shape="rect" coords="886,323,960,348" href="https://www.kegg.jp/kegg-bin/show_pathway?map00010" title="map00010: Glycolysis / Gluconeogenesis" onmouseover='popupTimer("map00010", "map00010: Glycolysis / Gluconeogenesis", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="rect" coords="824,360,976,385" href="https://www.kegg.jp/kegg-bin/show_pathway?map00030" title="map00030: Pentose phosphate pathway" onmouseover='popupTimer("map00030", "map00030: Pentose phosphate pathway", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="rect" coords="40,45,243,70" href="https://www.kegg.jp/dbget-bin/www_bget?map00750" title="map00750: Vitamin B6 metabolism" onmouseover='popupTimer("map00750", "map00750: Vitamin B6 metabolism", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="rect" coords="126,509,242,543" href="https://www.kegg.jp/kegg-bin/show_pathway?map00030" title="map00030: Pentose phosphate pathway" onmouseover='popupTimer("map00030", "map00030: Pentose phosphate pathway", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="rect" coords="241,331,382,365" href="https://www.kegg.jp/kegg-bin/show_pathway?map00630" title="map00630: Glyoxylate and dicarboxylate metabolism" onmouseover='popupTimer("map00630", "map00630: Glyoxylate and dicarboxylate metabolism", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="rect" coords="159,124,285,149" href="https://www.kegg.jp/kegg-bin/show_pathway?map00650" title="map00650: Butanoate metabolism" onmouseover='popupTimer("map00650", "map00650: Butanoate metabolism", "#ffffff")' onmouseout="hideMapTn()">
+<area shape="rect" coords="904,199,1027,224" href="https://www.kegg.jp/kegg-bin/show_pathway?map00730" title="map00730: Thiamine metabolism" onmouseover='popupTimer("map00730", "map00730: Thiamine metabolism", "#ffffff")' onmouseout="hideMapTn()">
+</map>
+
+<map id="module_mapdata" name="module_mapdata">
+</map>
+<div id="poplay" class="poplay"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

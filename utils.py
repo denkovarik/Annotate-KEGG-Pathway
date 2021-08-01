@@ -109,6 +109,20 @@ def check_file_exists(filepath):
         print(filepath + " does not exist\nQuitting...")
         exit(1)
         
+        
+def ec_in_genome(ec_number, genome_ec):
+    """
+    Determines if an ec number exists in a set of ec numbers. This function
+    mainly serves as a wrapper function for testing.
+        
+    :param ec_number: The EC Number to check if it exists in a set of EC 
+                      numbers from a genome
+    :param genome_ec: A set of EC Numbers from a genome.
+    :return: True If ec_number exists in genome_ec
+    :return: False Otherwise
+    """ 
+    return genome_ec is not None and ec_number in genome_ec
+    
 
 def file_ext_good(filename, ext):
     """
