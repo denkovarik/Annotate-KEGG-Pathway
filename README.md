@@ -102,12 +102,16 @@ As of the writing of this article, this program requires a RAST and/or PATRIC ge
 ### Run Annotate-KEGG-Pathway
 
 1. To start the program, run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley, you can run it from the command line. To do so, open the command prompt, move into the project directory, and then run the following command on the command line.
+
 ```
 py start.py
 ```
 
-Upon startup, this program will ask for 4 filepaths. Enter either the filepath for the RAST genome annotataion excel spreadsheet, the filepath for the PATRIC genome annotataion excel spreadsheet, or both. Please note that only one of these excel spreadsheets are needed, but the program will also except both. Select the .htm file from the downloaded "
-usage += "pathway that you want to annotate. Finally, select the output directory that you want the program to place the annotated KEGG Pathway in. This will be a webpage that should open up in your browser.
+upon startup, a window like the following will appear.
+
+![Run Program](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/run_program.PNG)
+
+The program will ask for 4 filepaths. Enter either the filepath for the RAST genome annotataion excel spreadsheet, the filepath for the PATRIC genome annotataion excel spreadsheet, or both. Please note that only one of these excel spreadsheets are needed, but the program will also accept both. Select the .htm file from the downloaded KEGG pathway that you want to annotate. Finally, select the output directory that you want the program to place the annotated KEGG Pathway in. This will be a webpage that should open up in your browser.
 
 Finally, select 'Go'. The pathway will be annotated indicating which proteins in the pathway are also present in your organism. A green box means that the gene for a protein was found in both the RAST and PATRIC genome annotations. An orange box indicates that the gene for the protein was only found in the RAST genome annotation. Blue boxes means that the gene for the protein was only found in the PATRIC genome annotation.
 
