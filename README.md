@@ -25,14 +25,21 @@ Make sure that you check the box 'Add Python 3.9 to PATH'.\
 
 ![Python Setup](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/Python_install.PNG)
 
-Otherwise, use all the default parameters and just click through the setup wizard to install Python. Once the install is complete, you can verify if python was installed correctly by doing the following. 
+Otherwise, use all the default parameters and just click through the setup wizard to install Python. Once the install is complete, you can verify if python was installed correctly by doing the following. Close out of the command prompt if open an then run it again. Then type 'py' and press Enter on the command prompt to invoke python. 
+
+![Invoke Python](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/invoke_python.PNG)
+
+If you get something like the above image, then python was installed correctly. Otherwise, something went wrong with your installation of Python. Try reinstalling it.
 
 ### Cloning This Repo with HTTPS
-To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If your SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move to the desired directory. Then simply run the following command and enter you credentials if prompted to do so.
+To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If your SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move into the desired directory. Then simply run the following command and press Enter.
+
 ```
 git clone https://github.com/denkovarik/Annotate-KEGG-Pathway.git
 ```
-After the repo has been cloned on your device, move into the Annotate-KEGG-Pathway directory from the command line.
+
+Enter in your credentials if prompted to do so. After the repo has been cloned on your device, move into the Annotate-KEGG-Pathway directory from the command line.
+
 ```
 cd Annotate-KEGG-Pathway
 ```
@@ -85,16 +92,16 @@ setup.bat
 
 ![Download Webpage Complete](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/download_complete_webpage.png)
 
-If the above steps were completed correctly, then you should be able to open the KEGG Pathway from file, and it should work as a functional webpage.
+Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. If the above steps were completed correctly, then you should be able to open the KEGG Pathway from file, and it should work as a functional webpage.
 
-### Ensure that you have the RAST and/or PATRIC genome annotations for your organism.
+### Ensure that you have the RAST and/or PATRIC genome annotations for your organism
 As of the writing of this article, this program requires a RAST and/or PATRIC genome annotaion for the organism. Please ensure that you have the excel files for these genome annotations in a known location.
 
 ![Genome Annotation Locations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/genome%20annotations.png)
 
-Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. To save the complete webpage to your local device, open the KEGG Pathway you want to annotate in your browser. Select 'File', then 'Select Save Page...'. Select the directory that you wish to save the page to, and make sure that the option 'Save as type:' is selected in the 'Save as type:' box. Then select save, and the complete webpage should be saved in the selected folder on you local device.
+### Run Annotate-KEGG-Pathway
 
-To start the program run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley from the command line in the project directory, run the following command.
+1. To start the program, run 'start.py'. This can be done by double clicking on 'start.py' in the file explorer. Alternativley, you can run it from the command line. To do so, open the command prompt, move into the project directory, and then run the following command on the command line.
 ```
 py start.py
 ```
