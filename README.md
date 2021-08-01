@@ -107,7 +107,7 @@ As of the writing of this article, this program requires a RAST and/or PATRIC ge
 py start.py
 ```
 
-upon startup, a window like the following will appear.
+Upon startup, a window like the following will appear.
 
 ![Run Program](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/run_program.PNG)
 
