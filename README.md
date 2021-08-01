@@ -1,5 +1,7 @@
 # Annotate-KEGG-Pathway
 
+![Biochemical Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/biochem_pathway_intro.jpg)
+
 ## Introduction
 This project was designed to help researchers use the biochemical pathways on KEGG (KEGG pathways) to analyze the genome of an organism. Specifically, it indicates which proteins from a KEGG pathway are present in an organism's genome. This project reads the excel file from an organism's genome annotation(s) (completed by RAST and/or PATRIC) and records the EC numbers for the proteins present in them. Then it parses the html file of a KEGG pathway to determine the EC numbers of the proteins present in the pathway. The program compares the proteins from the KEGG pathway to the proteins found in the organism's genome annotation. Proteins from the genome annotation that are also found to be present in the KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway. When completed, the annotated KEGG pathway will be saved to your local computer, and it will open up in your browser as a working webpage. 
 
