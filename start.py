@@ -7,11 +7,16 @@ import webbrowser
 sg.theme("DarkBlue")
 
 welcome_msg = "Welcome to Annotate KEGG Pathway!\n\n"
-welcome_msg += "This program was designed to help researches in Bioinformatics analyze the biochemical pathways present in\n"
-welcome_msg += "organisms using the genome annotation of the species and the downloaded complete webpage of a KEGG Pathway.\n"
-welcome_msg += "This program will parse an excel spreadsheet for the E.C. Numbers present in a genome annotatoin completed by\n"
-welcome_msg += "either RAST, PATRIC, or both. It will then use these E.C. numbers to indicate which proteins from your organism are\n"
-welcome_msg += "also present in any KEGG Pathway.\n\n\n"
+welcome_msg += "This project was designed to help researchers use the biochemical pathways on KEGG (KEGG pathways)\n"
+welcome_msg += "to analyze the genome of an organism. Specifically, it indicates which proteins from a KEGG pathway\n"
+welcome_msg += "are present in an organism's genome. This project reads the excel file from an organism's genome\n"
+welcome_msg += "annotation(s) (completed by RAST and/or PATRIC) and records the EC numbers for the proteins present\n"
+welcome_msg += "in them. Then it parses the html file of a KEGG pathway to determine the EC numbers of the proteins\n"
+welcome_msg += "present in the pathway. The program compares the proteins from the KEGG pathway to the proteins found\n"
+welcome_msg += "in the organism's genome annotation. Proteins from the genome annotation that are also found to be present\n"
+welcome_msg += "in the KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway.\n"
+welcome_msg += "When completed, the annotated KEGG pathway will be saved to your local computer, and it will open up in your\n"
+welcome_msg += "browser as a working webpage.\n\n\n"
 welcome_msg += "Select Files to Complete an Annotation of a KEGG Pathway\n"
 welcome_msg += "==========================================================================================="
 
