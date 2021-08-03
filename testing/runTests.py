@@ -292,57 +292,6 @@ class allTests(unittest.TestCase):
             'Gene Symbol', 'Product', 'GO']
         header = read_header(annot1_path)
         self.assertTrue(header == exp)
-            
-     
-    """
-    def test_read_RAST_EC_Nums(self):
-        filepath_RAST = currentdir +  '\\RAST_Geobacillus_LC41.xls'
-        filepath_PATRIC = currentdir +  '\\PATRIC_genome_feature.xlsx'
-        filepath_txt = currentdir +  '\\proteinAbbrev.txt'
-        expected = set(('4.1.3.36', '4.2.3.130', '4.2.1.1', '2.7.7.27', \
-        '5.4.4.2', '6.2.1.26', '2.5.1.6', '2.2.1.9', '2.4.1.21', '2.7.7.7', \
-        '4.1.1.49', '2.4.1.18', '2.4.1.1', '2.5.1.74', '4.2.99.20', \
-        '4.4.1.21'))
-        self.assertTrue(expected == read_RAST_EC_Nums(filepath_RAST))
-        try:
-            read_RAST_EC_Nums(filepath_PATRIC)
-        except:
-            self.assertTrue(True)
-        try:
-            read_RAST_EC_Nums(filepath_txt)
-        except:
-            self.assertTrue(True)
-            
-            
-    def test_read_PATRIC_EC_Nums(self):
-        expected = set(('6.1.1.1', '2.7.1.205', '5.99.1.3', '6.3.5.10', \
-        '1.7.99.4', '4.2.1.8', '5.3.1.12', '1.1.1.261', '4.3.1.18', \
-        '2.7.1.45', '2.1.1.151', '2.1.1.271', '3.7.1.12', '6.3.5.11', \
-        '2.1.1.289', '4.1.2.29', '2.1.1.107', '2.7.1.56', '3.4.11.18', \
-        '1.5.1.3', '4.3.1.19', '3.4.11.4', '2.1.1.195', '2.1.1.45', \
-        '2.3.1.79', '5.1.3.4', '4.2.1.44', '4.2.1.17', '6.2.1.1', \
-        '4.1.3.16', '2.7.1.202', '3.2.1.55', '2.5.1.17', '2.1.1.272', \
-        '4.2.1.75', '1.1.1.192', '2.3.1.n3', '3.1.4.46', '1.2.7.1', \
-        '1.7.99.6', '3.2.1.131', '3.7.1.22', '1.1.1.18', '1.11.1.9', \
-        '6.3.4.21', '1.1.1.57', '2.7.1.17', '5.3.1.30', '3.6.3.19', \
-        '1.2.1.18', '2.3.1.46', '3.6.3.3', '5.1.3.3', '5.4.99.60', \
-        '5.3.1.5', '3.2.1.8', '5.3.1.4', '2.4.1.157', '2.4.2.21', \
-        '2.4.1.129', '4.99.1.3', '5.99.1.2', '2.4.1.18', '1.3.1.106', \
-        '2.7.1.92', '3.5.1.19', '3.2.1.86', '2.7.1.16', '3.1.3.25', \
-        '3.2.1.37'))
-        filepath_RAST = currentdir +  '\\RAST_Geobacillus_LC41.xls'
-        filepath_PATRIC = currentdir +  '\\PATRIC_genome_feature.xlsx'
-        filepath_txt = currentdir +  '\\proteinAbbrev.txt'
-        proteins = read_PATRIC_EC_Nums(filepath_PATRIC)
-        self.assertTrue(proteins == expected)
-        
-        
-    def test_ec_in_genome(self):
-        filepath_RAST = currentdir +  '\\RAST_Geobacillus_LC41_complete.xls'
-        filepath_PATRIC = currentdir +  '\\PATRIC_genome_feature.xlsx'
-        ec_RAST = read_RAST_EC_Nums(filepath_RAST)
-        self.assertTrue(ec_in_genome("5.4.2.2", ec_RAST))
-    """
         
  
 if __name__ == '__main__':
