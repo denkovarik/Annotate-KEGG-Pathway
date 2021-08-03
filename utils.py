@@ -16,11 +16,15 @@ webFileExt = ''
 
 ################################ Functions ##################################
 
-def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None, webExt=None):
+def annotate_pathway(baseName, inDir, outDir, proteins, webExt=None):
     """
     This function annotates the pathway from KEGG.
     
     :param baseName: The base name for the pathway
+    :param inDir: Pathway to baseName KEGG Pathway
+    :param outDir: Pathway to ouput dir
+    :param proteins: Dictionary of proteins
+    :param webExt: Extention of the web file
     :return: The filepath for the annotated pathway .htm file.
     """ 
     # Source and destination filepaths for pathway
@@ -42,13 +46,32 @@ def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None, webE
     pathwayMapIm = getPathwayImPath(outPathway, source_code) 
     # Create a Set containing all EC numbers
     ec_all = set(())
-    if ec_RAST is not None:
-        ec_all = ec_all.union(ec_RAST)
-    if ec_PATRIC is not None:
-        ec_all = ec_all.union(ec_PATRIC)  
-    # Draw Green boxes around EC Numbers
+    for s in proteins.keys():
+        if s.split(" ")[0] == 'Genome' and s.split(" ")[1] == 'Annotation':
+            for ec in proteins[s]:
+                if not ec in ec_all:
+                    ec_all.add(ec)
     i=Image.open(pathwayMapIm)
     draw=D.Draw(i)
+    # Search for protein Abbrevs
+    source_code_temp = source_code.lower()
+    for abbrev in proteins['abbrevs']:
+        pos = source_code_temp.find("(" + abbrev.lower() + ")")
+        if pos != -1:
+            coordPos = source_code_temp.rfind("coords", 0, pos)
+            coordsStart = source_code_temp.find('"', coordPos) + 1
+            coordsEnd = source_code_temp.find('"', coordsStart)
+            theCoords = source_code_temp[coordsStart:coordsEnd]
+            sep = theCoords.find(",")
+            sep2 = theCoords.find(",", sep+1)
+            sep3 = theCoords.find(",", sep2+1)
+            startCoords = (int(theCoords[0:sep]), \
+                           int(theCoords[sep+1:sep2]))
+            endCoords   = (int(theCoords[sep2+1:sep3]), \
+                           int(theCoords[sep3+1:]))
+            color = 'yellow'
+            draw.rectangle([startCoords,endCoords],outline=color,width=2)
+    # Draw Green boxes around EC Numbers
     for ec in ec_all:
         pos = 0
         while pos > -1:
@@ -66,17 +89,16 @@ def annotate_pathway(baseName, inDir, outDir, ec_RAST=None, ec_PATRIC=None, webE
                 endCoords   = (int(theCoords[sep2+1:sep3]), \
                                int(theCoords[sep3+1:]))
                 color = ''
-                if ec_RAST is not None and ec in ec_RAST:
-                    if ec_PATRIC is not None and ec in ec_PATRIC:
-                        color = 'green'
-                    else:
-                        color = 'orange'
-                elif ec_PATRIC is not None and ec in ec_PATRIC:
-                    color = 'blue'
-                    
-                if color != '':
-                    draw.rectangle([startCoords,endCoords],outline=color,width=2)
-
+                present_in_all = True
+                for s in proteins.keys():
+                    if s.split(" ")[0] == 'Genome' and s.split(" ")[1] == 'Annotation':
+                        if not ec in proteins[s]:
+                            present_in_all = False
+                if present_in_all:
+                    color = 'green'
+                else:
+                    color = 'yellow'                    
+                draw.rectangle([startCoords,endCoords],outline=color,width=2)
     newPathwayMapIm = pathwayMapIm[:pathwayMapIm.rfind(".")] \
                     + pathwayMapIm[pathwayMapIm.rfind("."):]
     i.save(newPathwayMapIm)
@@ -98,6 +120,49 @@ def check_dir_exists(path):
         exit(2)
         
         
+def ec_strip(ec):
+    """
+    Strips the ec number of whitespace and other characters that are not apart 
+    of the EC number.
+    
+    :param ec: The String of the ec number to strip
+    :return: The stripped ec number.
+    """
+    ec = ec.strip()
+    s = 0
+    e = s
+    while s < len(ec):
+        if ec[s].isdigit():
+            e = s
+            # Search for the 3 periods in an ec number
+            e = ec.find(".", e)
+            if e == -1:
+                return ""
+            e = ec.find(".", e + 1)
+            if e == -1:
+                return ""
+            e = ec.find(".", e + 1)
+            if e == -1:
+                return ""
+            elif e >= len(ec):
+                return ""
+            e += 1   
+            # Find the end of the EC number
+            if ec[e] == '-':
+                if is_ec(ec[s:e+1]):
+                    return ec[s:e+1]
+            elif ec[e].isdigit():
+                while e < len(ec) and ec[e].isdigit():
+                    e += 1
+            # Make sure not #.#.#.#.#
+            if e < len(ec) and ec[e] == '.' and e + 1 < len(ec) and ec[e+1].isdigit():
+                return ""
+            if is_ec(ec[s:e]):
+                return ec[s:e]
+        s += 1
+    return ""
+        
+        
 def check_file_exists(filepath):
     """
     Function to check if a file exists. This file will exit the program if 
@@ -108,6 +173,75 @@ def check_file_exists(filepath):
     if not os.path.isfile(filepath):
         print(filepath + " does not exist\nQuitting...")
         exit(1)
+        
+        
+def extract_ec(string):
+    """
+    Extracts the EC number from a string.
+    
+    :param string: The string to extract the EC number from.
+    :return: The EC number as a list of strings
+    :return: empty set if no EC number found in string
+    """
+    if not has_ec(string):
+        return set(())
+    ec_nums = set(())
+    
+    # search for ec followed by space
+    ec_nums = ec_nums.union(extract_ec_by_keyword(string, "ec: "))
+    # search for ec: followed by space
+    ec_nums = ec_nums.union(extract_ec_by_keyword(string, "ec "))
+    # search for ec followed by no space
+    ec_nums = ec_nums.union(extract_ec_by_keyword(string, "ec:"))
+    # search for ec: followed by no space
+    ec_nums = ec_nums.union(extract_ec_by_keyword(string, "ec"))
+    
+    return ec_nums
+    
+    
+def extract_ec_by_keyword(string, keyword):
+    """
+    Extracts the EC number from a string by searching for a keyword.
+    
+    :param string: The string to extract the EC number from.
+    :param keyword: The keyword used to search of ec numbers
+    :return: The EC number as a list of strings
+    :return: Empty set if no EC number found in string
+    """
+    ec_nums = set(())
+    i = 0
+    the_str = string.lower()
+    
+     # search for ec number by keyword
+    while i < len(string) and i != -1:
+        i = the_str.find(keyword, i)
+        if i != -1:
+            i += len(keyword)
+            j = i
+            # Find the 3 periods
+            j = the_str.find(".", j + 1)
+            if j == -1:
+                break
+            j = the_str.find(".", j + 1)
+            if j == -1:
+                break
+            j = the_str.find(".", j + 1)
+            if j == -1:
+                i = j
+                break
+            j += 1
+            if the_str[j] == '-':
+                j += 1
+                if is_ec(string[i:j]):
+                    ec_nums.add(ec_strip(string[i:j]))
+            elif the_str[j].isdigit():
+                while j < len(the_str) and the_str[j].isdigit():
+                    j += 1
+                if is_ec(string[i:j]):
+                    ec_nums.add(ec_strip(string[i:j]))
+        if i != -1:
+            i += 1  
+    return ec_nums
         
         
 def ec_in_genome(ec_number, genome_ec):
@@ -191,6 +325,92 @@ def get_pathway_filepaths(path):
     return pathwayNames
     
     
+def has_ec(word):
+    """
+    Determines if a string has an EC number contained in it. This 
+    function looks for the following string patterns.
+            
+    :param word: A string to determine if is an EC number or not.
+    :return: Boolean indicating if a string contains an EC number
+    """
+    word = word.strip()
+    word = word.lower()
+    words = word.split(" ")
+    # Search for "ec" keyword
+    for i in range(len(words)):
+        if words[i].lower() == "ec" and len(words) > i:
+            if is_ec(words[i+1].lower()):
+                return True
+        if words[i].lower() == "ec:" and len(words) > i:
+            if is_ec(words[i+1].lower()):
+                return True
+        if words[i].lower() == "(ec" and len(words) > i:
+            if is_ec(words[i+1].lower()):
+                return True
+        if words[i].lower() == "(ec:" and len(words) > i:
+            if is_ec(words[i+1].lower()):
+                return True
+    return False
+    
+    
+def is_ec(word):
+    """
+    Determines if 'word' is an ec number or not.
+            
+    :param word: A string to determine if is an EC number or not.
+    :return: A boolean indicating if a string is an EC number
+    """
+    word = word.strip()
+    # Remove '(' characters
+    s = 0
+    while s != -1:
+        s = word.find("(")
+        if s != -1:
+            if s < len(word) - 2:
+                word = word[s+1:]
+            else:
+                word = word[:s]
+    # Remove ')' characters
+    s = 0
+    while s != -1:
+        s = word.find(")")
+        if s != -1:
+            if s < len(word) - 2:
+                word = word[s+1:]
+            else:
+                word = word[:s]
+            
+    # The string must be non-empty
+    if len(word) == 0:
+        return False
+    # Must be a single word
+    if word.find(" ") != -1:
+        return False
+    # First character must be a digit
+    if not word[0].isdigit():
+        return False
+    # Must have 3 periods
+    if word.count('.') != 3:
+        return False
+    # The last character must be a digit or -
+    if not word[len(word)-1].isdigit() and word[len(word)-1] != '-':
+        return False
+    # Make sure digits seperate the periods
+    if word.find("..") > 0:
+        return False
+    # Make sure every character is either a digit, -, or .
+    for i in word:
+        if i.isdigit():
+            pass
+        elif i == '-':
+            pass
+        elif i == '.':
+            pass
+        else:
+            return False
+    return True
+    
+    
 def is_PATRIC_spreadsheet(filepath):
     """
     This function determines if a file is an excel spreadsheet of a genome
@@ -269,6 +489,38 @@ def print_usage():
     usage += "file_containing_EC_numbers.txt"
     print(usage)
     return
+    
+    
+def read_header(filepath):
+    """
+    Reads the header of a genome annotation and returns the column names as a 
+    list.
+    
+    :param filepath: Filepath to the genome annotation
+    :return: A list of the column names
+    """  
+    col_labels = []
+    excel_data_df = pd.read_excel(filepath)
+    for col in excel_data_df.columns:
+        col_labels += [col]
+    return col_labels
+    
+    
+def read_genome_annot_EC(filepath, col):
+    """
+    Reads the ec numbers from a genome annotation excel sheet.
+    
+    :param filepath: The filepath for the genome annotation
+    :param col: The column to read
+    :return: A set of EC numbers
+    """
+    ec_nums = set(())
+    # Read genome annotation excel file
+    annot_df = pd.read_excel(filepath)
+    # Iterate over rows
+    for ind in annot_df.index:
+        ec_nums = ec_nums.union(extract_ec(annot_df[col][ind]))
+    return ec_nums
     
     
 def read_PATRIC_EC_Nums(filepath):
