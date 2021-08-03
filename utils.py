@@ -657,7 +657,9 @@ def valid_output_dir_selection(dirpath):
         
 def valid_selections(values):
     """
-    Validates the filepath selections for the input RAST excel spreadsheet, the input PATRIC excel spreadsheet, the input pathway .htm file to annotate, and the output directory to place the annotated pathway in.
+    Validates the filepath selections for the input RAST excel spreadsheet, 
+    the input PATRIC excel spreadsheet, the input pathway .htm file to 
+    annotate, and the output directory to place the annotated pathway in.
     
     :param values: Dictionary containing the filepaths to validate
     """
@@ -693,28 +695,34 @@ def valid_spreadsheet_selections(RAST_filepath, PATRIC_filepath):
     """
     # Make sure a genome annotation excel spreadsheet is selected
     if RAST_filepath == '' and PATRIC_filepath == '':
-        err_msg = "You must either have a RAST genome annotation excel spreadsheet, a PATRIC genome annotation excel spreadsheet, or both selected to continue." 
+        err_msg = "You must either have a RAST genome annotation excel "
+        err_msg += "spreadsheet, a PATRIC genome annotation excel spreadsheet, "
+        err_msg += "or both selected to continue." 
         sg.popup_ok(err_msg,title="Select a Genome Annotation")
         return False
     # Validate selected RAST Excel Spreadsheet
-    elif RAST_filepath != '' and (not Path(RAST_filepath).is_file() or not is_RAST_spreadsheet(RAST_filepath)):
+    elif RAST_filepath != '' and (not Path(RAST_filepath).is_file() \
+    or not is_RAST_spreadsheet(RAST_filepath)):
         if not Path(RAST_filepath).is_file():
             msg = "RAST Excel file does not exist!"
             title = "File Not Found"
             sg.popup_ok(msg, title=title)
         elif not is_RAST_spreadsheet(RAST_filepath):
-            msg = "The selected file for the RAST Excel Spreadsheet is not a RAST Excel Spreadsheet!"
+            msg = "The selected file for the RAST Excel Spreadsheet is not a "
+            msg += "RAST Excel Spreadsheet!"
             title = "Invalid RAST Excel Spreadsheet"
             sg.popup_ok(msg, title=title)
         return False
     # Validate selected PATRIC Excel Spreadsheet
-    elif PATRIC_filepath != '' and (not Path(PATRIC_filepath).is_file() or not is_PATRIC_spreadsheet(PATRIC_filepath)):
+    elif PATRIC_filepath != '' and (not Path(PATRIC_filepath).is_file() \
+    or not is_PATRIC_spreadsheet(PATRIC_filepath)):
         if not Path(PATRIC_filepath).is_file():
             msg = "PATRIC Excel file does not exist!"
             title = "File Not Found"
             sg.popup_ok(msg, title=title)
         elif not is_PATRIC_spreadsheet(PATRIC_filepath):
-            msg = "The selected file for the PATRIC Excel Spreadsheet is not a PATRIC Excel Spreadsheet!"
+            msg = "The selected file for the PATRIC Excel Spreadsheet is "
+            msg += "not a PATRIC Excel Spreadsheet!"
             title = "Invalid PATRIC Excel Spreadsheet"
             sg.popup_ok(msg, title=title)
         return False
