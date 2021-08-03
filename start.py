@@ -7,34 +7,23 @@ import webbrowser
 sg.theme("DarkBlue")
 
 welcome_msg = "Welcome to Annotate KEGG Pathway!\n\n"
-welcome_msg += "This project was designed to help researchers use the biochemical pathways on KEGG (KEGG pathways)\n"
-welcome_msg += "to analyze the genome of an organism. Specifically, it indicates which proteins from a KEGG pathway\n"
-welcome_msg += "are present in an organism's genome. This project reads the excel file from an organism's genome\n"
-welcome_msg += "annotation(s) (completed by RAST and/or PATRIC) and records the EC numbers for the proteins present\n"
-welcome_msg += "in them. Then it parses the html file of a KEGG pathway to determine the EC numbers of the proteins\n"
-welcome_msg += "present in the pathway. The program compares the proteins from the KEGG pathway to the proteins found\n"
-welcome_msg += "in the organism's genome annotation. Proteins from the genome annotation that are also found to be present\n"
-welcome_msg += "in the KEGG Pathway are indicated by colored boxes around the protein's EC Number in the KEGG Pathway.\n"
-welcome_msg += "When completed, the annotated KEGG pathway will be saved to your local computer, and it will open up in your\n"
-welcome_msg += "browser as a working webpage.\n\n\n"
-
-usage = "First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. "
-usage += "Please note that the saved pathway should consist of an .htm file and a folder containing more files and images. To "
-usage += "save the complete webpage to your local device, open the KEGG Pathway you want to annotate in your browser. "
-usage += "Select 'File', then 'Select Save Page...'. Select the directory that you wish to save the page to, and make sure that "
-usage += "the option 'Save as type:' is selected in the 'Save as type:' box. Then select save, and the complete webpage should "
-usage += "be saved in the selected folder on you local device.\n\n"
-
-usage += "Upon startup, this program will ask for 4 filepaths. Enter either the filepath for the RAST genome annotataion excel "
-usage += "spreadsheet, the filepath for the PATRIC genome annotataion excel spreadsheet, or both. Please note that only one of "
-usage += "these excel spreadsheets are needed, but the program will also except both. Select the .htm file from the downloaded "
-usage += "pathway that you want to annotate. Finally, select the output directory that you want the program to place the annotated "
-usage += "KEGG Pathway in. This will be a webpage that should open up in your browser.\n\n"
-
-usage += "Finally, select 'Go'. The pathway will be annotated indicating which proteins in the pathway are also present in your "
-usage += "organism. A green box means that the gene for a protein was found in both the RAST and PATRIC genome annotations. "
-usage += "An orange box indicates that the gene for the protein was only found in the RAST genome annotation. Blue boxes means "
-usage += "that the gene for the protein was only found in the PATRIC genome annotation.\n\n\n"
+welcome_msg += "This project was designed to help researchers use the biochemical pathways on KEGG (KEGG pathways) to\n"
+welcome_msg += "analyze the genome of an organism. Specifically, it indicates which proteins from a KEGG pathway are\n"
+welcome_msg += "present in an organism's genome. This project reads the excel file from an organism's genome annotation(s)\n"
+welcome_msg += "and records the EC numbers for the proteins present in them. This program will take up to 5 genome\n"
+welcome_msg += "annotations. It will also take another text file containing line separated protein abbreviations that you\n"
+welcome_msg += "also want to include for the annotation of the KEGG-Pathway (sometimes protein abbreviations are used in\n"
+welcome_msg += "KEGG-Pathways). Please note that this program will not look for protein abbreviations in the genome\n"
+welcome_msg += "annotations. The program will then parse the html file of a KEGG pathway to determine the protein\n"
+welcome_msg += "abbreviations and the EC numbers of the proteins present in the pathway. The program compares the proteins\n"
+welcome_msg += "from the KEGG pathway to the proteins found in the organism's genome annotation and text files. Proteins\n"
+welcome_msg += "from the genome annotation that are also found to be present in the KEGG Pathway are indicated by colored\n"
+welcome_msg += "boxes around the protein's EC Number in the KEGG Pathway. For the annotated KEGG-Pathway, an EC number has\n"
+welcome_msg += "a green rectangle drawn around it if the EC Number was present in all genome annotations given, and a yellow\n"
+welcome_msg += "rectangle will be drawn around EC Numbers that were only present in some but not all of the genome\n"
+welcome_msg += "annotations given. Protein abbreviations found in both the KEGG-Pathway and the supplemental protein\n"
+welcome_msg += "abbreviation text file will always have yellow boxes drawn around them. When completed, the annotated KEGG\n"
+welcome_msg += "pathway will be saved to your local computer, and it will open up in your browser as a working webpage.\n\n\n"
 
 
 def create_genome_annote_layout(num_annotations=None, values=None):
@@ -63,10 +52,16 @@ def create_genome_annote_layout(num_annotations=None, values=None):
         for i in range(num_annotations):
             annot_name = "Genome Annotation " + str(i + 1)
             if values is not None and annot_name in values.keys():
-                layout += [sg.Text(annot_name), sg.InputText(values[annot_name], key=annot_name), sg.FileBrowse()],
+                layout += [sg.Text(annot_name), \
+                    sg.InputText(values[annot_name], key=annot_name), \
+                    sg.FileBrowse()],
             else:
-                layout += [sg.Text(annot_name), sg.InputText(key=annot_name), sg.FileBrowse()],
+                layout += [sg.Text(annot_name), sg.InputText(key=annot_name), \
+                    sg.FileBrowse()],
+        layout += [sg.Button("Help")],
         layout += [sg.Button("Next")],
+    else:
+        layout += [sg.Button("Help")],
     return layout
         
 
@@ -119,20 +114,51 @@ def launch_final_window(values):
     :param values: The input values from the window
     """
     # Save the filepaths for the Genome Annotations to use
+    help_msg  = "This is the final window before the program starts to "
+    help_msg += "annotate the KEGG-Pathway. There are 2 required parameters, "
+    help_msg += "and 1 optional parameter. The first required parameter is the "
+    help_msg += ".htm or .html file for the KEGG-Pathway that you want to "
+    help_msg += "annotate. Please note that the files for the downloaded "
+    help_msg += "KEGG-Pathway should consist of an .htm or .html file along "
+    help_msg += "with a folder of the same name. This is important because "
+    help_msg += "the program will attempt to use files from this folder. "
+    help_msg += "Please see the README on GitHub for more information. The "
+    help_msg += "second required parameter is the directory to place the "
+    help_msg += "annotated KEGG pathway files in. The one optional parameter "
+    help_msg += "is a text file containing line separated protein "
+    help_msg += "abbreviations. This program will not look for protein "
+    help_msg += "abbreviations in the genome annotations. If you want protein "
+    help_msg += "abbreviations in a KEGG-Pathway to be included in the "
+    help_msg += "annotation, then you must specify a text file containing the "
+    help_msg += "line separated protein abbreviations to include. Please see the "
+    help_msg += "README for more information." 
     orgi_values = values.copy()
-    layout =    [
-                [sg.Text('Annotate-KEGG-Pathway', size=(35, 1), justification='center', font=("Helvetica", 25), relief=sg.RELIEF_RIDGE)], 
-                [sg.Text('Required Parameters', justification='left', font=("Helvetica", 15))],
-                [sg.Text('----------------------------', justification='left', font=("Helvetica", 15))],
-                [sg.Text('Select KEGG Pathway .htm File to Annotate', justification='left', font=("Helvetica", 12))],
+    sup_protein_file_msg = 'Text File Containing Line Separated Protein '
+    sup_protein_file_msg += 'Abbreviations that are Expected to be In '
+    sup_protein_file_msg += 'Genome\nAnnotation'
+    layout = [
+                [sg.Text('Annotate-KEGG-Pathway', size=(35, 1), \
+                    justification='center', font=("Helvetica", 25), \
+                    relief=sg.RELIEF_RIDGE)], 
+                [sg.Text('Required Parameters', justification='left', \
+                    font=("Helvetica", 15))],
+                [sg.Text('----------------------------', justification='left', \
+                    font=("Helvetica", 15))],
+                [sg.Text('Select KEGG Pathway .htm File to Annotate', \
+                    justification='left', font=("Helvetica", 12))],
                 [sg.InputText(key="KEGG-Pathway"), sg.FileBrowse()],
-                [sg.Text('Select Output Directory for Annotated Pathway Files: ', justification='left', font=("Helvetica", 12))], 
+                [sg.Text('Select Output Directory for Annotated Pathway Files: ', \
+                    justification='left', font=("Helvetica", 12))], 
                 [sg.InputText(key='-Output Dir-'), sg.FolderBrowse()],
                 [sg.Text("")],
-                [sg.Text('Optional Parameters', justification='left', font=("Helvetica", 15))],
-                [sg.Text('----------------------------', justification='left', font=("Helvetica", 15))],
-                [sg.Text('Text File Containing Line Separated Protein Abbreviations that are Expected to be In Genome\nAnnotation', justification='left', font=("Helvetica", 12))],
+                [sg.Text('Optional Parameters', justification='left', \
+                    font=("Helvetica", 15))],
+                [sg.Text('----------------------------', justification='left', \
+                    font=("Helvetica", 15))],
+                [sg.Text(sup_protein_file_msg, justification='left', \
+                    font=("Helvetica", 12))],
                 [sg.InputText(key="protein abbrevs"), sg.FileBrowse()],
+                [sg.Button("Help")],
                 [sg.Button("Go")],
             ]
 
@@ -142,6 +168,8 @@ def launch_final_window(values):
         event, values = window.read()
         if event == sg.WINDOW_CLOSED:
             break
+        elif event == "Help":
+            sg.popup(help_msg, title="Help")
         elif event == "Go":
             err = False
             if values['KEGG-Pathway'] == "":
@@ -157,7 +185,8 @@ def launch_final_window(values):
                     sg.popup(msg)
             elif values['-Output Dir-'] == "":
                 err = True
-                msg = "Please Select an Output Directory for the Annotated KEGG-Pathway"
+                msg = "Please Select an Output Directory for the Annotated "
+                msg += "KEGG-Pathway"
                 print(msg)
                 sg.popup(msg)
             elif values['protein abbrevs'] != "" \
@@ -183,12 +212,14 @@ def launch_final_window(values):
                 # Read KEGG-Pathway
                 kegg_pathway_path = values['KEGG-Pathway'][:values['KEGG-Pathway'].rfind("/") + 1]
                 kegg_pathway_path = kegg_pathway_path.replace("/", "\\")
-                pathwayName = values['KEGG-Pathway'][values['KEGG-Pathway'].rfind("/")+1:values['KEGG-Pathway'].rfind(".")]
+                pathwayName = values['KEGG-Pathway'][values['KEGG-Pathway'].rfind("/") \
+                    +1:values['KEGG-Pathway'].rfind(".")]
                 # Format Output Dir Filepath
                 outDir = values['-Output Dir-'].replace("/","\\")
                 # Annotate the Pathway
                 webExt = values['KEGG-Pathway'][values['KEGG-Pathway'].rfind("."):]
-                annotated_filepath = annotate_pathway(pathwayName, kegg_pathway_path, outDir, proteins, webExt)
+                annotated_filepath = annotate_pathway(pathwayName, kegg_pathway_path, \
+                    outDir, proteins, webExt)
                 msg = "Annotation of '" + pathwayName + "' is "
                 msg += "Complete!"
                 
@@ -206,6 +237,15 @@ def launch_select_genome_annots_window():
     :param num_annotations: The number of Genome Annotations to use
     :param values: The input values from the window
     """
+    help_msg  = "This window is where you select the genome annotations that you "
+    help_msg += "want to use to annotate the KEGG-Pathway. You can use up to 5 "
+    help_msg += "genome annotations. First enter the number of annotations you "
+    help_msg += "wish to use, then click the 'Confirm Number of Genome "
+    help_msg += "Annotations' button. Afterwards, some filebrowse widgets will "
+    help_msg += "appear. Use them to select the genome annotations that you "
+    help_msg += "want to use. Please note that the genome annotations must be "
+    help_msg += "excel files of a .xls or .xlsx format. When finished, click "
+    help_msg += "next."
     layout = create_genome_annote_layout()
     window = sg.Window('Annotate KEGG Pathway', layout)
 
@@ -214,13 +254,14 @@ def launch_select_genome_annots_window():
         event, values = window.read()
         if event == sg.WINDOW_CLOSED:
             break
-        elif event == "Help":
-            sg.popup_ok(usage, title="Usage")
         elif event == "Confirm Number of Genome Annotations":
             num_annotations = int(values["num_annotations"])
-            layout = create_genome_annote_layout(num_annotations=num_annotations, values=values)
+            layout = create_genome_annote_layout(num_annotations=num_annotations, \
+                values=values)
             window.close()
             window = sg.Window('Annotate KEGG Pathway', layout)
+        elif event == "Help":
+            sg.popup(help_msg, title="Help")
         elif event == "Next":
             if genome_annotations_good(num_annotations, values):
                 window.close()
@@ -234,11 +275,20 @@ def launch_select_protein_column_names_window(values):
     
     :param values: The input values from the window
     """
+    help_msg  = "This window is where you select the column names that you "
+    help_msg += "would expect to find the protein EC Numbers in for each of "
+    help_msg += "the genome annotations you entered. To see a list of column "
+    help_msg += "header names, click the dropdown menus next to each of the "
+    help_msg += "genome annotations. When finished, click 'Next'."
     orgi_vals = values.copy()
     layout =    [
-                [sg.Text('Annotate-KEGG-Pathway', size=(35, 1), justification='center', font=("Helvetica", 25), relief=sg.RELIEF_RIDGE)], 
-                [sg.Text('Specify Protein Columns for Genome Annotations', justification='left', font=("Helvetica", 15))],
-                [sg.Text('--------------------------------------------------------', justification='left', font=("Helvetica", 15))],
+                [sg.Text('Annotate-KEGG-Pathway', size=(35, 1), \
+                    justification='center', font=("Helvetica", 25), \
+                    relief=sg.RELIEF_RIDGE)], 
+                [sg.Text('Specify Protein Columns for Genome Annotations', \
+                    justification='left', font=("Helvetica", 15))],
+                [sg.Text('--------------------------------------------------------', \
+                    justification='left', font=("Helvetica", 15))],
             ]
     for i in range(values['num_annotations']):
         annot_name = "Genome Annotation " + str(i + 1)
@@ -248,7 +298,11 @@ def launch_select_protein_column_names_window(values):
             col_labels = read_header(filepath)
             key = annot_name + " col"
             menu_cols = tuple(col_labels)
-            layout += [sg.Text(annot_name + ": " + filename, justification='left', font=("Helvetica", 12))], [sg.Text("Select Column Containing Protein EC Numbers"), sg.InputOptionMenu(menu_cols, key=key)], [sg.Text("")], 
+            layout += [sg.Text(annot_name + ": " + filename, \
+                justification='left', font=("Helvetica", 12))], \
+                [sg.Text("Select Column Containing Protein EC Numbers"), \
+                sg.InputOptionMenu(menu_cols, key=key)], [sg.Text("")], 
+    layout += [sg.Button("Help")],
     layout += [sg.Button("Next")],
         
     window = sg.Window('Annotate KEGG Pathway', layout)      
@@ -258,6 +312,8 @@ def launch_select_protein_column_names_window(values):
         err = False
         if event == sg.WINDOW_CLOSED:
             break
+        elif event == "Help":
+            sg.popup(help_msg, title="Help")
         elif event == "Next":
             for i in range(orgi_vals['num_annotations']):
                 annot_name = "Genome Annotation " + str(i + 1)
@@ -275,10 +331,14 @@ def launch_select_protein_column_names_window(values):
 
 layout = [
     [sg.Text(welcome_msg)],
-    [sg.Text('Select RAST Excel Spreadsheet Genome Annotation: '), sg.InputText(key='-RAST_file-'), sg.FileBrowse(key="annotation_1")],
-    [sg.Text('Select PATRIC Excel Spreadsheet Genome Annotation: '), sg.InputText(key='-PATRIC_file-'), sg.FileBrowse()],
-    [sg.Text('Select Input Pathway .htm File to Annotate: '), sg.InputText(key='-Input Pathway-'), sg.FileBrowse()],
-    [sg.Text('Select Output Directory for Annotated Pathway Files: '), sg.InputText(key='-Output Dir-'), sg.FolderBrowse()],
+    [sg.Text('Select RAST Excel Spreadsheet Genome Annotation: '), \
+        sg.InputText(key='-RAST_file-'), sg.FileBrowse(key="annotation_1")],
+    [sg.Text('Select PATRIC Excel Spreadsheet Genome Annotation: '), \
+        sg.InputText(key='-PATRIC_file-'), sg.FileBrowse()],
+    [sg.Text('Select Input Pathway .htm File to Annotate: '), \
+        sg.InputText(key='-Input Pathway-'), sg.FileBrowse()],
+    [sg.Text('Select Output Directory for Annotated Pathway Files: '), \
+        sg.InputText(key='-Output Dir-'), sg.FolderBrowse()],
     [sg.Button("Go")],
     [sg.Button("Help")],
 ]
