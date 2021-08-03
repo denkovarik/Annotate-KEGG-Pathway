@@ -71,6 +71,12 @@ Next, install the dependencies needed for the project. This can be done by simpl
 setup.bat
 ```
 
+## Testing
+To run the automated tests for the project, execute the following command on the command prompt from the project root directory (Annotate-KEGG-Pathway).
+```
+py testing\runTests.py
+```
+
 ## Usage
 ### First downloaded the complete webpage of the KEGG Pathway you want to annotate and save it an a known location. 
 
