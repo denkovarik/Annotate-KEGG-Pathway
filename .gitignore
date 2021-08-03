@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 # Unneeded Project folders
-testing\testOutput\
+testing/testOutput/
+annotated_pathways/
 
 
