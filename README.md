@@ -117,7 +117,7 @@ Enter the number of genome annotations that you wish to use for annotating the K
 
 ![Enter Num Annotations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/enter_num_annots.PNG)
 
-This will cause some filebrowse widgets to appear. Use then to select the genome annotations that you wish to use for Annotating the KEGG-Pathway. These can be any genome annotation (like RAST, PATRIC, etc..) just as long as you can specify the column name the contains the protein EC numbers. Please note that the program expects the genome annotation to be the first sheet for each excel file you enter. Please make sure that your genome annotations for each excel file you enter is the first sheet. Also the program will only accept excel files of a .xls or .xlsx format. After you have entered the genome annotations, click the 'Next' button.
+This will cause some filebrowse widgets to appear. Use them to select the genome annotations that you wish to use for Annotating the KEGG-Pathway. These can be any genome annotation (like RAST, PATRIC, etc..) just as long as you can specify the column name the contains the protein EC numbers. Please note that the program expects the genome annotation to be the first sheet for each excel file you enter. Please make sure that your genome annotations for each excel file you enter is the first sheet. Also the program will only accept excel files of a .xls or .xlsx format. After you have entered the genome annotations, click the 'Next' button.
 
 ![Select Genome Annotations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/enter_genome_annotations.PNG)
 
