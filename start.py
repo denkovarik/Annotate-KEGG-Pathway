@@ -244,8 +244,13 @@ def launch_select_genome_annots_window():
     help_msg += "Annotations' button. Afterwards, some filebrowse widgets will "
     help_msg += "appear. Use them to select the genome annotations that you "
     help_msg += "want to use. Please note that the genome annotations must be "
-    help_msg += "excel files of a .xls or .xlsx format. When finished, click "
-    help_msg += "next."
+    help_msg += "excel files of a .xls or .xlsx format."
+    help_msg += "In addition, the program expects your genome annotation to be "
+    help_msg += "the first sheet in the excel file. There is currently no error "
+    help_msg += "checking for this, so please make sure that your genome "
+    help_msg += "annotation is the first sheet in the excel file for the "
+    help_msg += "genome annotation."
+    help_msg += "When finished, click next."
     layout = create_genome_annote_layout()
     window = sg.Window('Annotate KEGG Pathway', layout)
 
