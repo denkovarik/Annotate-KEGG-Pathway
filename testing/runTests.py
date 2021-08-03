@@ -22,7 +22,9 @@ class allTests(unittest.TestCase):
         filepath = currentdir + "\\test_protein_abbrevs\\testProteinAbbrev.txt"
         self.assertTrue(os.path.isfile(filepath))
         rslt = read_protein_abbrevs(filepath)
-        self.assertTrue(rslt == set(("EutG",)))
+        exp = set(("eutg", "ispe"))
+        for ec in rslt:
+            self.assertTrue(ec.lower() in exp)
         
         
     def test_read_genome_annot_EC(self):
