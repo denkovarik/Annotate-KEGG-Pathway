@@ -113,7 +113,7 @@ Upon startup, a window like the following will appear.
 
 ![Start Program](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/start_program.PNG)
 
-Enter the number of genome annotations that you wish to use to annotate the KEGG-Pathway and click the 'Confirm Number of Genome Annotations' button. You can enter up to 5 genome annotations. 
+Enter the number of genome annotations that you wish to use for annotating the KEGG-Pathway. Then click the 'Confirm Number of Genome Annotations' button. You can enter up to 5 genome annotations. 
 
 ![Enter Num Annotations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/enter_num_annots.PNG)
 
