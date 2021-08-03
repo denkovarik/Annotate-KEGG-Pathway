@@ -135,5 +135,9 @@ The supplemental protein abbreviations text file will look something like this.
 
 ![Protein Abbreviations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/protein_abbrev.PNG)
 
+After you have selected the necessary files, the press the "Go" button. It will take a second or two for the program to annotate the KEGG_Pathway. After it has completed, the program will save the annotated pathway to the output directory you specified and display it in your browser.
+
+![Annotated Pathway](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/annotated_pathway.PNG)
+
 ## Author
 * Dennis Kovarik
