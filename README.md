@@ -121,7 +121,19 @@ This will cause some filebrowse widgets to appear. Use them to select the genome
 
 ![Select Genome Annotations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/enter_genome_annotations.PNG)
 
-This will cause some filebrowse widgets to appear. Select the genome annotations 
+The next thing you need to do is to enter the column name for each genome annotation that you can expect find the protein EC Numbers in. In the window that appears next, click on the dropdown menu(s) to select the appropriate column name for each genome annotation. Then press the 'Next' button.
+
+![Select Column Names](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/select_col_names.PNG)
+
+In the final window that pops up, there are 2 required parameters and 1 optional parameter. For the first required parameter, enter the .htm or .html file for the downloaded KEGG-Pathway that you wish to annotate. Please not that there should also be a folder relating to the .htm or .html file also. For the second required parameter, select the output directory that you wish to save the annotated KEGG-Pathway to.
+
+The optional parameter is a text file containing line separated protein abbreviations that you wish to include in the genome annotation. Some KEGG-Pathways include protein abbreviations, but this program will not search for the protein abbreviations in the the genome annotations. So if you wish for certain protein abbreviations (that have been found to be present in your organism's genome) to be included in the annotation, then you need to select a text file containing the line separated protein abbreviations.
+
+![Final Window](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/final_window.PNG)
+
+The supplemental protein abbreviations text file will look something like this.
+
+![Protein Abbreviations](https://github.com/denkovarik/Annotate-KEGG-Pathway/blob/main/images/protein_abbrev.PNG)
 
 ## Author
 * Dennis Kovarik
