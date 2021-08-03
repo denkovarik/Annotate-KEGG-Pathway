@@ -242,20 +242,6 @@ def extract_ec_by_keyword(string, keyword):
         if i != -1:
             i += 1  
     return ec_nums
-        
-        
-def ec_in_genome(ec_number, genome_ec):
-    """
-    Determines if an ec number exists in a set of ec numbers. This function
-    mainly serves as a wrapper function for testing.
-        
-    :param ec_number: The EC Number to check if it exists in a set of EC 
-                      numbers from a genome
-    :param genome_ec: A set of EC Numbers from a genome.
-    :return: True If ec_number exists in genome_ec
-    :return: False Otherwise
-    """ 
-    return genome_ec is not None and ec_number in genome_ec
     
 
 def file_ext_good(filename, ext):
@@ -307,22 +293,6 @@ def getPathwayImPath(basePath, content):
     pathwayMapIm = pathwayFilesPath + content[start:end]
     check_file_exists(pathwayMapIm)
     return pathwayMapIm
-    
-    
-def get_pathway_filepaths(path):
-    """
-    This function simply returns a set of pathway names. A pathway name is expected to be an htm file. 
-    
-    :param path: The path to the directory containing the pathways.
-    :return: A set of filepaths to each pathway located in a directory.
-    """
-    pathwayNames = set(())
-    for f in os.listdir(path):
-        if not(len(f) > 11 and f[len(f)-12:] == "_updated.htm") \
-        and file_ext_good(f, 'htm'):
-            baseName = f[:f.rfind(".")]
-            pathwayNames.add(baseName)
-    return pathwayNames
     
     
 def has_ec(word):
@@ -409,75 +379,6 @@ def is_ec(word):
         else:
             return False
     return True
-    
-    
-def is_PATRIC_spreadsheet(filepath):
-    """
-    This function determines if a file is an excel spreadsheet of a genome
-    annotation completed by RAST.
-    
-    :param filepath: The filepath of the file to check
-    :return: True if file is an excel spreadsheet of a RAST genome annotation
-    :return: False otherwise
-    """
-    # Check the file extension for .xls extension
-    ext = filepath[filepath.rfind("."):]
-    if ext != '.xlsx':
-        return False
-    # Check that file exists
-    if not os.path.isfile(filepath):
-        print(filepath + " does not exist")
-        return False
-    # List of expected column names for a genome annotation excel 
-    # spreadsheet from PATRIC
-    expected_col_names = ['Genome', 'Genome ID', 'Accession', 'PATRIC ID', 'RefSeq Locus Tag', 'Alt Locus Tag', 'Feature ID', 'Annotation', 'Feature Type', 'Start', 'End', 'Length', 'Strand', 'FIGfam ID', 'PATRIC genus-specific families (PLfams)', 'PATRIC cross-genus families (PGfams)', 'Protein ID', 'AA Length', 'Gene Symbol', 'Product', 'GO']
-
-    try:
-        # Make sure file has expected columen names for PATRIC spreadsheet
-        wb_obj = openpyxl.load_workbook(filepath)
-        sheet = wb_obj.active
-        return True
-    except:
-        err = "An error occured while reading file column names for PATRIC "
-        err += "excel file."
-        print(err)
-    # Otherwise return False
-    return False
-
-
-def is_RAST_spreadsheet(filepath):
-    """
-    This function determines if a file is an excel spreadsheet of a genome
-    annotation completed by RAST.
-    
-    :param filepath: The filepath of the file to check
-    :return: True if file is an excel spreadsheet of a RAST genome annotation
-    :return: False otherwise
-    """
-    # Check the file extension for .xls extension
-    if filepath[filepath.rfind("."):] != '.xls':
-        return False
-    # Check that file exists
-    if not os.path.isfile(filepath):
-        print(filepath + " does not exist")
-        return False
-    # List of expected column names for a genome annotation excel 
-    # spreadsheet from RAST
-    expected_col_names = ['contig_id', 'feature_id', 'type', 'location', \
-    'start', 'stop', 'strand', 'function', 'aliases', 'figfam', \
-    'evidence_codes', 'nucleotide_sequence', 'aa_sequence']
-    # Make sure file has expected columen names for RAST spreadsheet
-    try:
-        df = pd.read_excel(filepath)
-        file_col_names = df.columns.view()
-        if (file_col_names == expected_col_names).all():
-            return True
-    except:
-        err = "An error occured while reading file column names for RAST "
-        err += "excel file."
-        print(err)
-    # Otherwise return False
-    return False
 
 
 def print_usage():
@@ -523,40 +424,6 @@ def read_genome_annot_EC(filepath, col):
     return ec_nums
     
     
-def read_PATRIC_EC_Nums(filepath):
-    """
-    This function reads all the EC numbers in an excel spreadsheet from a 
-    genome annotation completed by PATRIC. This function will store these EC 
-    numbers in a set and return it.
-    
-    :param filepath: The filepath of the PATRIC file
-    :return: A set of protein EC numbers
-    """
-    if not is_PATRIC_spreadsheet(filepath):
-        raise Exception("File is not a RAST excel spreadsheet")
-    ecNumbers = set(())  
-    try:       
-        wb = openpyxl.load_workbook(filepath)
-        first_sheet = wb.sheetnames[0]
-        worksheet = wb[first_sheet]
-
-        #here you iterate over the rows in the specific column
-        for row in range(2,worksheet.max_row+1):  
-            for column in "T":  
-                cell_name = "{}{}".format(column, row)
-                protein = worksheet[cell_name].value
-                pos = protein.find("(EC ")
-                if pos > 0:
-                    ec = protein[pos+4:protein.find(")", pos)]
-                    ecNumbers.add(ec.strip())
-        return ecNumbers
-    except:
-        err = "An error occured while reading file column names for PATRIC "
-        err += "excel file."
-        print(err)
-    return ecNumbers
-    
-    
 def read_protein_abbrevs(filepath):
     """
     This function reads a txt file contain line or space separated protein 
@@ -579,153 +446,5 @@ def read_protein_abbrevs(filepath):
                 proteinAbbrevs.add(abbrev.strip())
     # Return the set
     return proteinAbbrevs
-    
-    
-def read_RAST_EC_Nums(filepath):
-    """
-    This function reads all the EC numbers in an excel spreadsheet from a 
-    genome annotation completed by RAST. This function will store these EC 
-    numbers in a set and return it.
-    
-    :param filepath: The filepath of the RAST file
-    :return: A set of protein EC numbers
-    """
-    if not is_RAST_spreadsheet(filepath):
-        raise Exception("File is not a RAST excel spreadsheet")
-        
-    # Read the xls file
-    df = pd.read_excel(filepath)
-    # Store EC numbers in a python set
-    ecNumbers = set(())  
-    for protein in df.function:
-        pos = protein.find("(EC ")
-        if pos > 0:
-            ecNumbers.add(protein[pos+4:protein.find(")", pos)].strip())
-    return ecNumbers
-    
-    
-def valid_in_pathway_selection(filepath):
-    """
-    Validates the selection for the input pathway to annotate.
-    
-    :param filepath: The filepath of the input pathway .htm file to validate.
-    :return: True if selection was valid
-    :return: False otherwise
-    """
-    # Check if a file was selected
-    if filepath == '':
-        msg = "You must select a .htm file for the input pathway to continue!"
-        title = "Invalid Pathway Selection"
-        sg.popup_ok(msg,title=title)
-        return False
-    # Check that file has .htm extension
-    
-    if filepath[filepath.rfind("."):] == '.html':
-        return True
-    elif filepath[filepath.rfind("."):] == '.htm':
-        return True
-    else:
-        msg = "Invaid webpage file extenstion!"
-        title = "Invalid extension"
-        sg.popup_ok(msg,title=title)
-        return False	
-    # Check that the selected file is a file
-    if not os.path.isfile(filepath):
-        msg = "The input pathway file doesn't exit!"
-        title = "File Not Found"
-        sg.popup_ok(msg,title=title)
-        return False
-    return True
-    
-    
-def valid_output_dir_selection(dirpath):
-    """
-    Validates the selection for the output directory.
-    
-    :param dirpath: The path to the output dir.
-    :return: True if the path is valid 
-    :return: False otherwise
-    """
-    # Make sure that an output directory was selected
-    if dirpath == "":
-        msg = "You must select an output directory to continue!"
-        title = "Invalid Output Directory"
-        sg.popup_ok(msg,title=title)
-        return False
-    return True
-        
-        
-def valid_selections(values):
-    """
-    Validates the filepath selections for the input RAST excel spreadsheet, 
-    the input PATRIC excel spreadsheet, the input pathway .htm file to 
-    annotate, and the output directory to place the annotated pathway in.
-    
-    :param values: Dictionary containing the filepaths to validate
-    """
-    # Validate the RAST and PATRIC spreadsheet filepaths
-    if not valid_spreadsheet_selections(values["-RAST_file-"], \
-    values["-PATRIC_file-"]):
-        return False
-    # Validate the input pathway slection
-    elif not valid_in_pathway_selection(values['-Input Pathway-']):
-        return False
-    # Validate the output directory path selection
-    elif not valid_output_dir_selection(values['-Output Dir-']):
-        return False
-    # Make sure the input and output directories are not the same
-    elif values['-Input Pathway-'][:values['-Input Pathway-'].rfind("/")] \
-    == values['-Output Dir-']:
-        msg = "The directory containing the input .htm file must be different from the output directory!"
-        title = "Input Folder Same as Output Folder"
-        sg.popup_ok(msg,title=title)
-        return False        
-    return True
-
-
-def valid_spreadsheet_selections(RAST_filepath, PATRIC_filepath):
-    """
-    This function validates the selections for the RAST and Patric excel 
-    spreadsheets.
-    
-    :param RAST_filepath: The filepath for the RAST excel spreadsheet
-    :param PATRIC_filepath: The filepath for the PATRIC excel spreadsheet
-    :return: True if the selections were validates
-    :return: False otherwise
-    """
-    # Make sure a genome annotation excel spreadsheet is selected
-    if RAST_filepath == '' and PATRIC_filepath == '':
-        err_msg = "You must either have a RAST genome annotation excel "
-        err_msg += "spreadsheet, a PATRIC genome annotation excel spreadsheet, "
-        err_msg += "or both selected to continue." 
-        sg.popup_ok(err_msg,title="Select a Genome Annotation")
-        return False
-    # Validate selected RAST Excel Spreadsheet
-    elif RAST_filepath != '' and (not Path(RAST_filepath).is_file() \
-    or not is_RAST_spreadsheet(RAST_filepath)):
-        if not Path(RAST_filepath).is_file():
-            msg = "RAST Excel file does not exist!"
-            title = "File Not Found"
-            sg.popup_ok(msg, title=title)
-        elif not is_RAST_spreadsheet(RAST_filepath):
-            msg = "The selected file for the RAST Excel Spreadsheet is not a "
-            msg += "RAST Excel Spreadsheet!"
-            title = "Invalid RAST Excel Spreadsheet"
-            sg.popup_ok(msg, title=title)
-        return False
-    # Validate selected PATRIC Excel Spreadsheet
-    elif PATRIC_filepath != '' and (not Path(PATRIC_filepath).is_file() \
-    or not is_PATRIC_spreadsheet(PATRIC_filepath)):
-        if not Path(PATRIC_filepath).is_file():
-            msg = "PATRIC Excel file does not exist!"
-            title = "File Not Found"
-            sg.popup_ok(msg, title=title)
-        elif not is_PATRIC_spreadsheet(PATRIC_filepath):
-            msg = "The selected file for the PATRIC Excel Spreadsheet is "
-            msg += "not a PATRIC Excel Spreadsheet!"
-            title = "Invalid PATRIC Excel Spreadsheet"
-            sg.popup_ok(msg, title=title)
-        return False
-    return True
     
 ##############################################################################
